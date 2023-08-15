@@ -16,24 +16,22 @@
   <meta name="author" content="lnyx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="gym103687K. Dynamic Reachability 首先看到这个巨大的时限 $12\operatorname{s}$ ，盲猜一手是 $bitset$ 或者是分块结果两个都有 最直观的想法肯定是直接搜，复杂度是 $O((n+m)q)$ 的，不可以接受，但是这种做法太没有拓展性了，考虑一些有拓展性的做法，发现一般图传递闭包是 $O(\frac{n^3}{\omega})$，但是拓扑图的传">
+    <meta name="description" content="本文为二十一世纪二十年代的最新产物，作者：[数据删除] 想转载这辈子都不用联系我了 本文内容可能过于空虚，建议先扫一遍，然后再分成几个部分每天读一部分，因为这样你才能掌握本文的精髓 竞赛图 是一个很没用的东西，好比数学中的 解 剖 青 蛙 。它也是信奥学习中的不用学习的点，因此把它学好啥用没有。如果你去洛谷等OJ上刷题你会明显感觉到： 竞赛图的题目我都能看得懂题解，但要我自己贺却没有思路。这时，贺">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shabby ds">
-<meta property="og:url" content="http://lnyxqwq.github.io/2023/08/15/shabby%20ds/index.html">
+<meta property="og:title" content="竞赛图六步走">
+<meta property="og:url" content="http://lnyxqwq.github.io/2023/08/15/%E7%AB%9E%E8%B5%9B%E5%9B%BE%E5%85%AD%E6%AD%A5%E8%B5%B0/index.html">
 <meta property="og:site_name" content="o(*≧▽≦)ツ">
-<meta property="og:description" content="gym103687K. Dynamic Reachability 首先看到这个巨大的时限 $12\operatorname{s}$ ，盲猜一手是 $bitset$ 或者是分块结果两个都有 最直观的想法肯定是直接搜，复杂度是 $O((n+m)q)$ 的，不可以接受，但是这种做法太没有拓展性了，考虑一些有拓展性的做法，发现一般图传递闭包是 $O(\frac{n^3}{\omega})$，但是拓扑图的传">
+<meta property="og:description" content="本文为二十一世纪二十年代的最新产物，作者：[数据删除] 想转载这辈子都不用联系我了 本文内容可能过于空虚，建议先扫一遍，然后再分成几个部分每天读一部分，因为这样你才能掌握本文的精髓 竞赛图 是一个很没用的东西，好比数学中的 解 剖 青 蛙 。它也是信奥学习中的不用学习的点，因此把它学好啥用没有。如果你去洛谷等OJ上刷题你会明显感觉到： 竞赛图的题目我都能看得懂题解，但要我自己贺却没有思路。这时，贺">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.emojiall.com/img/platform/qq/074@2x.gif">
-<meta property="article:published_time" content="2023-08-15T11:56:40.000Z">
-<meta property="article:modified_time" content="2023-08-15T11:56:54.261Z">
+<meta property="article:published_time" content="2023-08-15T12:08:51.000Z">
+<meta property="article:modified_time" content="2023-08-15T12:09:10.410Z">
 <meta property="article:author" content="lnyx">
-<meta property="article:tag" content="ds">
+<meta property="article:tag" content="竞赛图">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.emojiall.com/img/platform/qq/074@2x.gif">
   
   
   
-  <title>shabby ds - o(*≧▽≦)ツ</title>
+  <title>竞赛图六步走 - o(*≧▽≦)ツ</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="shabby ds"></span>
+            <span id="subtitle" data-typed-text="竞赛图六步走"></span>
           
         </div>
 
@@ -224,7 +222,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-15 19:56" pubdate>
+        <time datetime="2023-08-15 20:08" pubdate>
           2023年8月15日 晚上
         </time>
       </span>
@@ -236,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          3.5k 字
         
       </span>
     
@@ -247,7 +245,7 @@
         
         
         
-          10 分钟
+          29 分钟
         
       </span>
     
@@ -284,22 +282,114 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">shabby ds</h1>
+            <h1 id="seo-header">竞赛图六步走</h1>
             
             
               <div class="markdown-body">
                 
-                <h4 id="gym103687K-Dynamic-Reachability"><a target="_blank" rel="noopener" href="https://codeforces.com/gym/103687/problem/K">gym103687K. Dynamic Reachability</a></h4>
-<p>首先看到这个巨大的时限 $12\operatorname{s}$ ，盲猜一手是 $bitset$ 或者是分块<s>结果两个都有</s></p>
-<p>最直观的想法肯定是直接搜，复杂度是 $O((n+m)q)$ 的，不可以接受，但是这种做法太没有拓展性了，考虑一些有拓展性的做法，发现一般图传递闭包是 $O(\frac{n^3}{\omega})$，但是拓扑图的传递闭包是 $O(\frac{nm}{\omega})$ ，考虑把他缩点成一个拓扑图然后拓扑排序，时间复杂度 $O((n+m+\frac{nm}{\omega})q)$ <s>更加</s>不能接受了，但是这个看起来就比上面那个高级很多，因为我们能求出整张图上每个点能到达的所有点，这个是上面做不到的，而且每次修改只会改一条边，所以图不会产生太大的变化</p>
-<p>这时候就感觉应该是分块了，我们把每 $B$ 个询问放到一块做，设这 $B$ 个操作里面涉及到的点为关键点，涉及到的边为关键边，发现我们就是问关键点的连通性，我们对于每个点维护一个关键点的 $bitset$ ，表示这个点能到达的关键点，通过黑色的非关键边跑拓扑排序求出，这样就在不考虑关键边的情况下建出了不含关键边的关键点新图，因为我 $bitset$ 只维护关键点，所以复杂度就是 $O(\frac{mB}{\omega}q)$</p>
-<p>先不管关键边，思考怎么查询，直观想法是继续拓扑排序，但是这样没有拓展性，因为我不可能建出新图后递归上面那坨答辩算法，因为万一是我建出来的就是拓扑图就寄了不能递归了，所以考虑一开始就提出的 $bfs$ ，发现现在的图很小了，只有 $B$ 个点 $B^2$ 条边，直接跑复杂度是 $O((B+B^2)q)$ 的。</p>
-<p>现在来分析一下复杂度，将上面的答辩加起来是 $O(\frac{q}{B}(n+m+\frac{mB}{\omega})+(B+B^2)q)$ ，化简一下是 $O(\frac{mq}{\omega}+\frac{q}{B}(n+m)+B^2q)$，根号平衡一下 $B$ 发现大概是 $(n+m)^{\frac{1}{3}}$ ，然后就结束了……吗？</p>
-<p>算一下复杂度大概是 $6e8$ 左右，然后我们就开心的写，然后就 $T$ 了 <img src="https://www.emojiall.com/img/platform/qq/074@2x.gif" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>发现有一个神奇的东西，用 $bitset$ 优化 $bfs$ 可以做到 $O(n+\frac{n^2}{\omega})$ ，现在复杂度就是 $O(\frac{mq}{\omega}+\frac{q}{B}(n+m)+\frac{B^2}{\omega}q)$ 了，复杂度大概是 $2.5e8$ ，我也不知道，反正就是能过了</p>
-<h4 id="gym105065B-Call-Me-Call-Me"><a target="_blank" rel="noopener" href="https://codeforces.com/gym/104065/problem/B">gym105065B. Call Me Call Me</a></h4>
-<p>15s 时限我跑了14476 ms。</p>
-<p>lxl 讲的</p>
+                <p>本文为二十一世纪二十年代的最新产物，<strong>作者：[数据删除]</strong></p>
+<p>想转载这辈子都不用联系我了</p>
+<p>本文内容可能过于空虚，建议<strong>先扫一遍</strong>，然后再<strong>分成几个部分</strong>每天读一部分，因为这样你才能掌握<strong>本文的精髓</strong></p>
+<p><strong>竞赛图</strong> 是一个很没用的东西，好比数学中的 解 剖 <strong>青 蛙</strong> 。它也是信奥学习中的不用学习的点，因此把它学好<strong>啥用没有</strong>。如果你去洛谷等OJ上刷题你会明显感觉到：</p>
+<p>竞赛图的题目我都能<strong>看得懂题解</strong>，但要我<strong>自己贺</strong>却没有思路。这时，贺的<strong>套路</strong>就凸显出了它的重要性。</p>
+<blockquote>
+<p>套路如浩瀚的题海中的一座灯塔，指引我们解题的方向。 ——[数据删除]</p>
+</blockquote>
+<p>网上其他的文章会叽里咕噜说一堆东西，常见的有</p>
+<p><strong>怎么SSH——怎么背下 ip 赋——ctrl cv</strong></p>
+<p>可你不妨设想一下，这种套路有实质的作用吗？ 没有，因为前两步会比第三步还要难写。</p>
+<h2 id="一、竞赛图六步走">一、竞赛图六步走</h2>
+<p>注意：这 $6$ 步和所谓的 $SSH$ 完全不同，后面会讲到。</p>
+<ol>
+<li>贺</li>
+<li>贺</li>
+<li>贺</li>
+<li>贺</li>
+<li>贺</li>
+<li>贺</li>
+</ol>
+<h1>二、“六步走”的详解</h1>
+<p>PS：这部分博客会按照六个步骤分为六个小部分，<strong>每部分会以一个口诀结束，并会在下方有相应的解释</strong>，口诀的作用是方便各位大佬<strong>记忆</strong> ，看我多贴心 。</p>
+<p>${\tt}\Huge{[数据删除]大佬太有文采了但是我编不出来口诀，希望有人提供，谢谢}$</p>
+<p>定义：$n$ 个点，任意两点之间有一条有向边的图</p>
+<p>性质：（证明都是瞎写的不保证正确性</p>
+<p>因为 $n=2$ 很奇怪，所以不算进下面的<s>结论</s>套路</p>
+<ol>
+<li>
+<p>竞赛图一定存在一条哈密顿路径</p>
+<p>证明：考虑归纳， $n=1$ 的时候显然成立，现在已经求出 $n-1$ 个点的竞赛图的哈密顿路径了，发现如果第 $n$ 个点连出去的边都是指向其他点或者都是指向自己时，一定可以把这个点放到哈密顿路径首或尾，若不满足上面的条件，则一定存在 $u,v$ 满足有边 $(u,n),(n,v)$ ，直接把 $n$ 放到  $u,v$ 中间就好了</p>
+</li>
+<li>
+<p>竞赛图缩点后成链状</p>
+<p>这里的是呈链状，边都是从拓扑序小的连向拓扑序大的</p>
+<p>证明：发现缩点后还是一张竞赛图，因为竞赛图一定有哈密顿回路，所以呈链状</p>
+</li>
+<li>
+<p>竞赛图的每一个强连通分量都存在哈密顿回路</p>
+<p>证明：跟哈密顿路径考虑方法很像，归纳，$n=1$ 的时候显然成立，还是讨论边的指向，如果都是指向其他点或者都是指向自己时，发现这个点一定自己作为一个 $scc$ ，否则一定可以在他所在的 $scc$ 的环上找到两点 $u,v$ 使得边是 $(u,n),(n,v)$ ，这样一定可以加进去</p>
+</li>
+<li>
+<p>对于一个竞赛图中大小为 $n$ 的强连通分量，其一定存在大小为 $\forall len \in [1,n]$ 的简单环</p>
+<p>证明：考虑 $3$ 的证明，我们对于一个强连通分量是一个点一个点加的，每次加之前都会有环，加之后也有环，所以显然是对的</p>
+<p>因为竞赛图很傻逼，发现 $2$ 个点没有环，会影响到 $n=3$ 所以结论要求 $n \ge 4$ 😠</p>
+</li>
+<li>
+<p>如果 $u$ 的出度大于 $v$ 的出度，则 $u$ 一定可以到达 $v$</p>
+<p>证明：如果 $u,v$ 在一个强连通分量里面显然正确，当不在一个强连通分量时考虑缩点后的拓扑序</p>
+<p>设 $u$ 所在的强连通分量是 $x$，$v$ 所在的强连通分量是 $y$ （注意强连通分量编号是拓扑序倒序</p>
+<p>当 $x&gt;y$ 时，缩点完成链状，显然可以到达</p>
+<p>当 $x&lt;y$ 时，因为缩点完了已经没有环了，所以 $v$ 连出去的点一定是强连通分量标号小于 $y$ 的， $u$ 连出去的点一定是强连通分量标号小于 $x$ 的，又因为 $x&lt;y$ ，所以得出 $u$ 出度小于 $v$ 出度，寄</p>
+</li>
+<li>
+<p>存在竞赛图满足每个点出度序列为 $arr$ 当且仅当将 $arr$ 排序后，$\forall k \sum\limits_{i=1}^{k} arr_i \ge {k \choose 2}$ 且 $\sum\limits_{i=1}^{n} arr_i = {n \choose 2}$ (兰道定理)</p>
+<p>证明：必要性显然</p>
+<p>充分性考虑构造，先让出边集合 $A$ 为 $0,1,2,3…n-1$ ，这显然是可以构造出来的，并且满足上面的条件，现在有一些点不满足，我们换一下边的指向顺序来满足这个条件，设 $x$ 为第一个不满足 $A_x=arr_x$ 的地方，$y$ 为最大的 $A_y=A_x$  ，$z$ 为最小的 $A_z&gt;arr_z$ ，发现 $A_x &lt; arr_x \le arr_y &lt; A_z$ ，所以必定有一个点 $p$ 和 $x,z$ 的关系是边 $(p,x),(z,p)$ 现在只要 $swap$ 一下两条边指向就可以让 $A_x+1\rightarrow A_x,A_z-1\rightarrow A_z$ ，发现这个操作一定是可以一直进行的，所以我们就通过不断调整调整出 $arr$ 来了</p>
+<p>推论：一个竞赛图强连通当且仅当 $\not\exists 1\le k &lt;n,\sum\limits_{i=1}^{k}arr_i={k\choose 2}$</p>
+<p>必要性：对于 $\forall k \in [1,n)$ ，因为我是极大强连通分量的一部分，所以一定有点会指向 $(k,n]$ 的点，又因为我前 $k$ 个点的导出子图是竞赛图，所以 $\sum\limits_{i=1}^{k}arr_i\ge{k\choose 2}+1$</p>
+<p>$\sum\limits_{i=1}^{k}arr_i&gt;{k\choose 2}$</p>
+<p>条件可知前 $k$ 个点组成的导出子图边集大小为 ${k \choose 2}$，所以前 $k$ 个点没有指向后面的点的边，寄</p>
+<p>充分性：跟哈密顿回路很像，归纳，现在已经有 $k$ 个点了，现在加进来第 $k+1$ 个点 $y$ ，我们钦定这个点一定有一条 $\exists x\in S,(x,y)$ 的边，其中 $S$ 是当前选的选的 $k$ 个点的集合，发现加进来后一定是一个强连通分量，又因为给定条件，所以一定能一直找到这个点</p>
+</li>
+</ol>
+<p>坚持看完的都是大佬</p>
+<p>建议各位大佬将本文收藏，多读几遍，口诀最好背过，这样效果最好。 本文的初衷是想让大佬们更加大佬化，WE AK NOIP！！！—— [数据删除] 大佬</p>
+<h2 id="Wait！！！">Wait！！！</h2>
+<p>信奥中有一句通用法则：</p>
+<blockquote>
+<p><strong>题海战术</strong></p>
+</blockquote>
+<p>套路虽然有用，但是不结合题目来<strong>实战</strong>，就等于 <strong>0</strong> ，我们一起来将这个竞赛图套路应用到实际解题当中： （ 竞赛图的核心其实不在思路这块，代码相对而言可以说是呼之欲出的，又<strong>限于篇幅</strong>，后面就<strong>重点讲怎么贺</strong>，代码就省略了哈 ）</p>
+<ol>
+<li>基础应用：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/T235955">牢固的壳子</a></li>
+<li>高级运用：熟练的互联网搜索能力</li>
+<li>赛场应用：$SSH$</li>
+<li>优化：还不赶紧让你贺的那个人优化</li>
+</ol>
+<p>可能你会认为，博主直接复制粘贴一个标程，再敲点注释不是又省事又清楚吗？干嘛非要长篇大论讲一堆没用的这种心情很能理解，但是你要明白</p>
+<p>不会自己贺出来题目的人，贺多少题都没用。信奥的学习是注重贺的，而不是注重自己做的。看了别人的题解得到启发确实可以马上 $AC$ ，但是考场上却不能，因为没有了别人的题解，没有过硬的 $SSH$ 能力，而本博客正是总结了“贺的套路”。 ——[数据删除] 大佬</p>
+<p>后面我会从洛谷中精选一些绿题和蓝题进行讲解，并且每日更新至多 <strong>${\tt}\Huge{0}$</strong> 道题。</p>
+<h2 id="CF1268D-Invertation-in-Tournament"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1268D">CF1268D Invertation in Tournament</a></h2>
+<p>结结结结结结结结结结结论题</p>
+<p>首先先将竞赛图缩点，考虑操作几次可以把这张竞赛图变成一个强连通图</p>
+<p>考虑随便找一个点 $u$ 翻转，假设他在的强连通分量是 $x$ ，发现他一定会向小于 $x$ 的强连通分量连边，而大于 $x$ 的强连通分量一定会向 $x$ 连边（ $tarjan$ 后强连通分量编号是拓扑序倒序），所以反转后就一定是强连通竞赛图了！</p>
+<p>这样我们就做完了……吗？</p>
+<p>发现好像有这么一种可能，我翻转 $u$ 之后 $x$ 会分裂成很多强连通分量，寄！</p>
+<p>但是没有关系，因为我们有<s>结论</s>套路 $4$！，这样我们呢可以保证存在一个点 $u$ 使得翻转之后 $x$ 不会寄！</p>
+<p>然后我们就做完了……吗？</p>
+<p>万一根本没有强连通分量大小大于 $3$ 的就没有这个条件了 🤔</p>
+<p>但是真的寄了吗？发现将一个大小为 $3$ 的强连通竞赛图翻转一个点相当于把他变成两条链，所以只要强连通分量大小小于等于 $3$ 的个数大于 $2$ 就没事了 🙃</p>
+<p>好像 $3$ 个大小为 $1$ 的也会寄，不过没关系，我不想 🤔 了，发现好像要是有那么 $10$ 个点左右就没事了，开摆</p>
+<p>题解说是 $7$ 个点，但是好像没有考虑我上面说的捏（<s>但是上面的只有 $3$ 个点</s></p>
+<p>要是不考虑这 $3$ 个大小为 $1$ 的情况，大概证明就是首先强连通分量个数大于 $2$ 或等于 $1$ 显然正确，要是大小为 $2$ ，那么肯定有一个连通块大小大于 $3$ ，赢！🙃</p>
+<p>然后我们就做完了……吗？</p>
+<p>好像真的做完了……</p>
+<p>注意特判本来就是一个强连通竞赛图</p>
+<p>发现 $tarjan$ 缩点是 $O(n+m)$ 的，寄 😅，不过没关系，还有一个兰道定理推论（<s>结论</s>套路 $6$）可以搞这个玩意</p>
+<ul>
+<li>本次更新时间为2020.5.24</li>
+<li>下次更新时间为2020.5.24</li>
+</ul>
+<p>如果你认为本文对你有帮助的话，请<strong>素质三连</strong>，Thanks♪(･ω･)ﾉ</p>
 
                 
               </div>
@@ -312,7 +402,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/ds/" class="print-no-link">#ds</a>
+        <a href="/tags/%E7%AB%9E%E8%B5%9B%E5%9B%BE/" class="print-no-link">#竞赛图</a>
       
     </div>
   
@@ -324,8 +414,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>shabby ds</div>
-      <div>http://lnyxqwq.github.io/2023/08/15/shabby ds/</div>
+      <div>竞赛图六步走</div>
+      <div>http://lnyxqwq.github.io/2023/08/15/竞赛图六步走/</div>
     </div>
     <div class="license-meta">
       
@@ -369,9 +459,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/15/%E7%AB%9E%E8%B5%9B%E5%9B%BE%E5%85%AD%E6%AD%A5%E8%B5%B0/" title="竞赛图六步走">
+                      <a href="/2023/08/15/POJ%203728%20The%20merchant/" title="POJ 3728 The merchant">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">竞赛图六步走</span>
+                        <span class="hidden-mobile">POJ 3728 The merchant</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -379,8 +469,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/15/S2%E9%A2%98%E5%8D%95%EF%BC%9ANOIP%E5%89%8D%E5%BB%BA%E8%AE%AE%E5%81%9A%E7%9A%84%E9%A2%98/" title="S2题单：NOIP前建议做的题">
-                        <span class="hidden-mobile">S2题单：NOIP前建议做的题</span>
+                      <a href="/2023/08/15/shabby%20ds/" title="shabby ds">
+                        <span class="hidden-mobile">shabby ds</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

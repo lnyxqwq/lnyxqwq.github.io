@@ -1,0 +1,788 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/wife.png">
+  <link rel="icon" href="/img/wife.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="lnyx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="期望 好像没有什么知识点呀 😅 满足可加性 $E(ax+by)&#x3D;aE(x)+bE(y)$ 当事件 $x,y$ 相互独立时满足可乘行 $E(x\times y)&#x3D;E(x)\times E(y)$ $n$ 个相互独立取值在 $[0,1]$ 的随机变量，其中第 $k$ 小的随机变量的值的期望 考虑引入一个新随机变量 $n+1$ ，发现第 $k$ 小的随机变量的值期望等于新点在第 $k$ 小变量前面的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="期望">
+<meta property="og:url" content="http://lnyxqwq.github.io/2023/08/15/%E6%9C%9F%E6%9C%9B/index.html">
+<meta property="og:site_name" content="o(*≧▽≦)ツ">
+<meta property="og:description" content="期望 好像没有什么知识点呀 😅 满足可加性 $E(ax+by)&#x3D;aE(x)+bE(y)$ 当事件 $x,y$ 相互独立时满足可乘行 $E(x\times y)&#x3D;E(x)\times E(y)$ $n$ 个相互独立取值在 $[0,1]$ 的随机变量，其中第 $k$ 小的随机变量的值的期望 考虑引入一个新随机变量 $n+1$ ，发现第 $k$ 小的随机变量的值期望等于新点在第 $k$ 小变量前面的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp5.toutiaoimg.com%2Flarge%2F5da00080b05131e27b6&amp;refer=http%3A%2F%2Fp5.toutiaoimg.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1669088490&amp;t=52c1e094d5d4865251cd272696b4a7d8">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F9399b942e3b58e4ef81170e52564cc7631b78102e385c-u5d1HF_fw658&amp;refer=http%3A%2F%2Fhbimg.b0.upaiyun.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1669009243&amp;t=49374371256902e16a3c6e04bfe2e656">
+<meta property="article:published_time" content="2023-08-15T12:55:48.000Z">
+<meta property="article:modified_time" content="2023-08-15T12:55:59.830Z">
+<meta property="article:author" content="lnyx">
+<meta property="article:tag" content="期望">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp5.toutiaoimg.com%2Flarge%2F5da00080b05131e27b6&amp;refer=http%3A%2F%2Fp5.toutiaoimg.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1669088490&amp;t=52c1e094d5d4865251cd272696b4a7d8">
+  
+  
+  
+  <title>期望 - o(*≧▽≦)ツ</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lnyxqwq.github.io","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>lnyx</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/002.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="期望"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-15 20:55" pubdate>
+          2023年8月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          43 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">期望</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp5.toutiaoimg.com%2Flarge%2F5da00080b05131e27b6&amp;refer=http%3A%2F%2Fp5.toutiaoimg.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1669088490&amp;t=52c1e094d5d4865251cd272696b4a7d8" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="期望">期望</h2>
+<p>好像没有什么知识点呀 😅</p>
+<p>满足可加性 $E(ax+by)=aE(x)+bE(y)$</p>
+<p>当事件 $x,y$ 相互独立时满足可乘行 $E(x\times y)=E(x)\times E(y)$</p>
+<h4 id="n-个相互独立取值在-0-1-的随机变量，其中第-k-小的随机变量的值的期望">$n$ 个相互独立取值在 $[0,1]$ 的随机变量，其中第 $k$ 小的随机变量的值的期望</h4>
+<p>考虑引入一个新随机变量 $n+1$ ，发现第 $k$ 小的随机变量的值期望等于新点在第 $k$ 小变量前面的概率</p>
+<p>因为是连续随机变量，分布是均匀的，所以可以抽象成排列来考虑，将随机变量看成隔板，现在隔板将 $[0,1]$ 均匀分成 $n+1$ 份，而 $k$ 前面有 $k$ 份，所以第 $k$ 小的随机变量的值的期望是 $\frac{k}{n+1}$</p>
+<h3 id="典-其实下面也有好多典题-😅">典 <s>其实下面也有好多典题 😅</s></h3>
+<h4 id="P4316-绿豆蛙的归宿"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4316">P4316 绿豆蛙的归宿</a></h4>
+<p>题意：求 $dag$ 上从 $S$ 走到 $T$ 的期望步数</p>
+<p>倒推：设 $f_u$ 表示从 $u$ 走到 $T$ 的期望步数，转移是 $f_u=\sum\limits_{v}^{(u,v) \in E} \frac{(f_v+w)}{deg_u}$ 其中 $deg$ 是出度</p>
+<p>正推：设 $f_u$ 表示从 $S$ 走到 $u$ 的期望步数，转移是 $f_v=\sum\limits_{u}^{(u,v) \in E} \frac{(f_u+g_u \times w)}{deg_u},g_u=\sum\limits_{u}^{(u,v) \in E} \frac{g_u}{deg_u}$</p>
+<p>倒着推很没意思，但是正着推感觉好怪，但是仔细想想是对的，因为我不一定走 $(u,v)$ 这条边，等于就是 $E(a+bx)$ 中的 $x$ ，但是为啥倒推是对的呀 🤔，因为从 $u$ 出发必定要走一条出边，所以概率和为一，也就是 $x=\frac{w}{deg}$ 了</p>
+<p>正推：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/109981628">code</a></p>
+<h3 id="我不会做部分">我不会做部分</h3>
+<h4 id="CF235B-Let’s-Play-Osu"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF235B">CF235B Let’s Play Osu!</a></h4>
+<p>二次期望</p>
+<p>我们现在想求 $E(x^2)$ 不会，嘿嘿 🤭</p>
+<p>假设现在连续 $O$ 长度为 $x$ ，我们加上一个 $O$ 的贡献是  $E((x+1)^2)-E(x^2)=E(x^2)+E(1)+E(2x)-E(x^2)=E(2x+1)$</p>
+<p>现在我们需要知道 $E(x)$ ，容易发现 $E(x)=(E(x-1)+1)\times p_i$</p>
+<h4 id="P1654-OSU"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1654">P1654 OSU!</a></h4>
+<p>和上面差不多</p>
+<h4 id="P1850-NOIP2016-提高组-换教室"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1850">P1850 [NOIP2016 提高组] 换教室</a></h4>
+<p>设 $f_{i,j,0/1}$ 表示我现在上到第 $i$ 节课，用了 $j$ 次换教室机会，现在在 $c_i/d_i$ 的期望步数，直接 $dp$ 即可</p>
+<p><s>代码我已经看不懂了</s></p>
+<h4 id="P2473-SCOI2008-奖励关"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2473">P2473 [SCOI2008] 奖励关</a></h4>
+<p>🕊🕊🕊</p>
+<h4 id="P6835-Cnoi2020-线形生物"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6835">P6835 [Cnoi2020]线形生物</a></h4>
+<p>简单题 💧💧💧</p>
+<p>不想写了看题解去吧</p>
+<h4 id="P4206-NOI2005-聪聪与可可"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4206">P4206 [NOI2005] 聪聪与可可</a></h4>
+<p>🕊🕊🕊</p>
+<h4 id="CF280C-Game-on-Tree"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF280C">CF280C Game on Tree</a></h4>
+<p>考虑 $dp$ ，发现根本不会做🤡</p>
+<p>那就把每个点根据期望的线性性拆开</p>
+<p>设现在的点是 $u$ ，$u$ 有 $x$ 个祖先，将操作看成序列，发现 $u$ 会有贡献当且仅当所有祖先都在我后面，所以期望贡献是 $\frac{1}{dep_u}$ ，这玩意我想了一年 👈🤣</p>
+<h4 id="2544-「JXOI2018」游戏"><a target="_blank" rel="noopener" href="https://loj.ac/p/2544">#2544. 「JXOI2018」游戏</a></h4>
+<p>🧐🧐🧐</p>
+<p>感觉和上面的很像，只用检查所有区间内没有约数的数就可以了</p>
+<p>然后这个题还有一个好玩的东西</p>
+<p>现在有 $n$ 个球，求随便选出 $k$ 个关键球，最后一个点位置的期望</p>
+<p>我现在要算最后一个关键球位置等于 $n-\text{球在所有关键球后面的个数}$</p>
+<p>先不考虑球的标号，假设现在已经选出所有关键球，现在就等于有 $k+1$ 个抽屉，等概率放球，所以在所有关键球后面的概率是 $\frac{1}{k+1}$ ，那么在所有关键球后面球的期望是 $\frac{n-k}{k+1}$ ，那么最后一个关键球位置期望就是 $n-\frac{n-k}{k+1}=\frac{(n+1)k}{k+1}$</p>
+<p>所以答案乘上 $n!$ 就对了</p>
+<h4 id="P3750-六省联考-2017-分手是祝愿"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3750">P3750 [六省联考 2017] 分手是祝愿</a></h4>
+<p>有一半的分是 $k=n$ 😍</p>
+<p>首先先想一个贪心看看怎么做</p>
+<p>从后往前考虑，如果他的倍数有奇数个要操作那么就为 $1$ ，否则为 $0$</p>
+<p>不难发现一定是优的</p>
+<p>想到这个 $100$ 分就很简单了</p>
+<p>设 $f_i$ 表示还需要操作 $i$ 个灯，这时我想减去一个灯的期望次数，转移方程显然 $f_i=1+(n-i)\times(f_{i+1}+f_i)$ ，就是如果我这次操作没有成功会多一个灯需要操作，然后从 $i+1$ 个操作到 $i-1$ ，然后化简一下柿子就好了</p>
+<h4 id="P4284-SHOI2014-概率充电器"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4284">P4284 [SHOI2014] 概率充电器</a></h4>
+<p>不会做👈🤣</p>
+<p>首先发现期望根本没用，求概率就可以了。</p>
+<p>思考一个点怎么着会被充上电，一种是自己直接充上，还有就是从上面充上电或者从下面充上电</p>
+<p>发现是一颗树，所以从下面充上电很好做，自己直接冲上也是很简单的，现在就考虑怎么算从上面来的就好了</p>
+<p>假设我现在在点  $u$ 并且已经算好了，我现在要贡献到子节点 $v$ 这一个操作，现在我对 $v$ 的贡献是这个点充上电的概率 $-$ 只从 $v$ 上来 $u$ 充上电的概率，然后就推一下柿子</p>
+<p>设 $(u,v)$ 出现概率为 $A$ ，$v$ 充上电概率为 $B$，$x$ 为不算 $v$ 的充电概率， $y$ 为算 $v$ 的充电概率</p>
+<p>有柿子：</p>
+<p>$y=(1-x)AB+x$</p>
+<p>$y=AB+x-xAB$</p>
+<p>$y=AB+x(1-AB)$</p>
+<p>$x=\frac{y-AB}{1-AB}$</p>
+<p>$y-x=y-\frac{y-AB}{1-AB}$</p>
+<p>乘上点系数就做完了</p>
+<h4 id="P3239-HNOI2015-亚瑟王"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3239">P3239 [HNOI2015]亚瑟王</a></h4>
+<p>我就是亚瑟王！😎😎😎</p>
+<p>一开始我设的是 $f_{i,j}$ 表示考虑在第 $j$ 轮，我现在考虑到了第 $i$ 个并且选他的概率，但是不对 😔</p>
+<p>正确的是设 $f_{i,j}$ 表示 $r$ 轮一块考虑，现在考虑到第 $i$ 个数，有 $j$ 轮已经选数的方案数</p>
+<p>那么我不选数的概率是 $(1-p_i)^{m-j}$ ，选的就是 $1-(1-p_i)^{m-j}$</p>
+<p>但是好像不会统计答案，发现我转移时的东西就是选的概率，所以在转移的时候统计就可以了</p>
+<h4 id="pjudge-21743-青鱼和怪兽"><a target="_blank" rel="noopener" href="http://pjudge.ac/contest/1114/problem/21743">pjudge 21743 青鱼和怪兽</a></h4>
+<p>🐟🐟🐟</p>
+<p>设 $f_{i,j}$ 表示玩家还有 $i$ 点血量，👾还有 $j$ 点血量时获胜的期望时间</p>
+<p>转移方程：$f_{i,j}=\min(f_{n,m},1+p\times f_{i,j-1}+(1-p)\times f_{i-1,j})$</p>
+<p>发现这有个取 $\min$ ，根本不会做，我也不能实数枚举 😔，但是发现每次都是对一个数和 $f_{n,m}$ 取 $\min$ ，仔细思考 🤔 发现 $f_{n,m}$ 是具有单调性的，可以二分 🤩🤩🤩</p>
+<p>具体来说，假设现在二分的 $f_{n,m}$ 是 $x$ ，如果按 $x$ 算出来的 $f_{n,m}$ 比 $x$ 小说明你 $x$ 设大了，缩小，否则增大</p>
+<h4 id="6513-「雅礼集训-2018-Day10」足球大战"><a target="_blank" rel="noopener" href="https://loj.ac/p/6513">#6513. 「雅礼集训 2018 Day10」足球大战</a></h4>
+<p>⚽⚽⚽</p>
+<p>发现这玩意能直接算</p>
+<p>主队在 $n$ 秒内进 $m$ 个球的概率是 ${n\choose m}\times p^m\times (1-p)^{n-m}$ ，客队换成 $q$ 就行了</p>
+<p>现在想主队赢，那么概率就是 $\sum\limits_{i=1}^{n}({n\choose i}\times p^i\times (1-p)^{n-i}\times (\sum\limits_{j=0}^{i-1}{n\choose j}\times q^j\times (1-q)^{n-j}))$</p>
+<p>枚举主队进球数，对客队进球数那个 $\sum$ 做一个前缀和就好了</p>
+<p>注意 $n$ 是 $1e7$ 级别的，不能快速幂，要预处理次方</p>
+<h4 id="6495-「雅礼集训-2018-Day1」树"><a target="_blank" rel="noopener" href="https://loj.ac/p/6495">#6495. 「雅礼集训 2018 Day1」树</a></h4>
+<p><a target="_blank" rel="noopener" href="https://noiresources.ccf.org.cn/NOI2022%E5%AE%A3%E4%BC%A0%E7%89%87.mp4"><s>倒悬的splay</s></a> （有端暗示</p>
+<p>有一个经典技巧，发现不会期望，可以将答案按某些性质划分为一些类，然后对于每类计数</p>
+<p>设 $f_{i,j}$ 表示现在树上有 $i$ 个点，最大深度为 $j$ 的方案数，考虑现在加入第 $i+1$ 个点怎么做</p>
+<p>然后不会做👈🤣</p>
+<p>🤔 一下发现好像就是不能转移，但是发现根节点性质很好，所以考虑加入的是根节点</p>
+<p>发现 $2$ 号节点一定是连向 $1$ 号节点的，所以按这玩意分类</p>
+<p>没有子节点：这就是初始化的值</p>
+<p>有子节点：枚举 $2$ 号节点子树大小以及深度，然后枚举剩下的子树加上根节点组成的树的节点数和深度，拼一块就好了</p>
+<p>注意转移顺序</p>
+<p><s>所以这玩意是 $O(n^4)$ 的</s></p>
+<h4 id="CF1187F-Expected-Square-Beauty"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1187F">CF1187F Expected Square Beauty</a></h4>
+<p>推柿子</p>
+<p>首先求一下 $E(B(x))$ ，这玩意非常简单，就等于 $1+\sum\limits_{i=2}^{n}[x_{i-1}\not=x_i]$</p>
+<p>然后平方一下： $E(B(x)^2)=E((1+\sum\limits_{i=2}^{n}[x_{i-1}\not=x_i])\times (1+\sum\limits_{i=2}^{n}[x_{i-1}\not=x_i]))$</p>
+<p>化简：</p>
+<p>$E(B(x)^2)=E(1+2\sum\limits_{i=2}^{n}[x_{i-1}\not=x_i]+\sum\limits_{i=2}^{n}[x_{i-1}\not=x_i]\sum\limits_{j=2}^{n}[x_{j-1}\not=x_j]$</p>
+<p>发现第 $i$ 个 $[x_i\not=x_{i-1}]$ 之和第 $i-1,i,i+1$ 有关，把这些拿出来单独做，剩下的直接乘就好了</p>
+<h4 id="AGC006C-Rabbit-Exercise"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_agc006_c">[AGC006C] Rabbit Exercise</a></h4>
+<p><s>这个性质我在初三考 NOIP 的时候场上想出来了，但是高一做这道题的时候没想出来 👈🤣</s></p>
+<p>第 $i$ 只兔子跳完位置的期望是 $\frac{2\times a_{i-1}-a_i+2\times a_{i+1}-a_i}{2}=a_{i+1}+a_{i-1}$</p>
+<p>这玩意不就是 $NOIP2021$ 方差嘛！那就差分一下，然后现在第 $i$ 只兔子跳等于 $swap(a_i,a_{i+1})$</p>
+<p>然后这个万一就可以倍增了/hanx</p>
+<h4 id="2325-「清华集训-2017」小-Y-和恐怖的奴隶主"><a target="_blank" rel="noopener" href="https://loj.ac/p/2325">#2325. 「清华集训 2017」小 Y 和恐怖的奴隶主</a></h4>
+<p>首先先列出 $dp$ ：$f_{i,a,b,c}$ 表示进行了 $i$ 轮，有 $a$ 个 $1$ 滴血的👾，有 $b$ 个 $2$ 滴血的👾，有 $c$ 个 $3$ 滴血的👾的期望，转移很简单，但是有点长，不想写了开摆，答案就是打怪兽时转移转移的概率</p>
+<p>每一层的转移都是一样的，并且发现状态数不是很多，考虑用矩阵优化 $dp$ ，现在时间复杂度是 $Tstate^3\log n$ 这个有点大，过不去，但是因为矩阵乘向量是 $O(n^2)$ ，可以预处理出所有 $2^i$ 的矩阵，直接拼起来求答案，时间复杂度 $O(state^3\log n+Tstate^2\log n)$</p>
+<p>实测 $state$ 大小是 $165$ ，加上一个答案就是 $166$</p>
+<h4 id="gym102978-H-Harsh-Comments"><a target="_blank" rel="noopener" href="https://codeforces.com/gym/102978/problem/H">gym102978 H. Harsh Comments</a></h4>
+<h4 id="CF643E-Bear-and-Destroying-Subtrees"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF643E">CF643E Bear and Destroying Subtrees</a></h4>
+<p>无语了 👈🤣</p>
+<p>首先考虑 $O(n^2)$ 的 $dp$ 怎么做</p>
+<p>设 $f_{u,j}$ 表示以节点 $u$ 为根节点，树深度为 $j$ 的概率，但是发现这样转移要搞一个前缀和，不如直接把状态改为：以节点 $u$ 为根节点，树深度小于等于 $j$ 的概率，转移就很简单了 $f_{u,j}=\prod\limits_{v}^{(u,v)\in E} (\frac{f_{v,j-1}}{2}+\frac{1}{2})$</p>
+<p>然后考虑优化，现在这个题牛逼的地方就来了，发现如果深度太深的话概率太小，不用计算，深度直接算到五六十就行了 😮</p>
+<h4 id="CF908D-New-Year-and-Arbitrary-Arrangement"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF908D">CF908D New Year and Arbitrary Arrangement</a></h4>
+<h4 id="CF1067D-Computer-Game"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1067D">CF1067D Computer Game</a></h4>
+<h4 id="AGC020F-Arcs-on-a-Circle"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_agc020_f">[AGC020F] Arcs on a Circle</a></h4>
+<h4 id="CF98E-Help-Shrek-and-Donkey"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF98E">CF98E Help Shrek and Donkey</a></h4>
+<h3 id="瞎猜消元部分-text-Guess-elimination">瞎猜消元部分 ( $\text{Guess elimination}$ )</h3>
+<h4 id="CF24D-Broken-robot"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF24D">CF24D Broken robot</a></h4>
+<p>考虑对于每一行分开高斯消元</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/T273265">$THUSC2022$ 解法</a></p>
+<h4 id="P3232-HNOI2013-游走"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3232">P3232 [HNOI2013]游走</a></h4>
+<p>随机游走板子</p>
+<h4 id="PKUSC2022-D1T1-Rating"><a target="_blank" rel="noopener" href="http://www.gdfzoj.com:23380/contest/757/problem/4017">[PKUSC2022] D1T1 Rating</a></h4>
+<h3 id="坚定学校自信">坚定学校自信</h3>
+<h4 id="1817-【2017-3-长乐省选集训-Day18-T3】子串"><a target="_blank" rel="noopener" href="https://sjzezoj.com/problem/1817">#1817. 【2017.3 长乐省选集训 Day18 T3】子串</a></h4>
+<p>建出字符集的 $AC$ 自动机，然后根据他所说的列方程高斯消元就好了</p>
+<h4 id="1472-【2022-7-11】旅行-travel"><a target="_blank" rel="noopener" href="https://sjzezoj.com/problem/1472">#1472. 【2022.7.11】旅行 travel</a></h4>
+<p>首先每个点的权值很好算，搞树上差分就好了</p>
+<p>然后是最简单的 $O(n^2)\ dp$  ，设 $f_i$ 表示一次方期望， $g_i$ 表示二次方期望做，发现只有根节点是对的，所以做 $n$ 遍就好了</p>
+<p>考虑用换根优化，假设算出 $u$ 的贡献，现在要换到 $v$ ，现在 $u$ 对 $v$ 的贡献就是 $u$ 的贡献刨去子树 $v$ 乘上边权，发现好像合并上去了就不好刨出来了，所以在 $dp$ 记一个前后缀 $f,g$  值，这样就能刨出去了</p>
+<h4 id="1454-【NOIP模拟（第二套）】B-数连通块"><a target="_blank" rel="noopener" href="https://sjzezoj.com/problem/1454">#1454. 【NOIP模拟（第二套）】B. 数连通块</a></h4>
+<p>两种方法：</p>
+<p>第一种就是直接干，树上莫队求区间权值和</p>
+<p>第二种是把一条边的权值离散到 $(u_i,v_i)$ 上二位数点</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/training/237150#problems">南校 期望 - 题单 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a></p>
+<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F9399b942e3b58e4ef81170e52564cc7631b78102e385c-u5d1HF_fw658&amp;refer=http%3A%2F%2Fhbimg.b0.upaiyun.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1669009243&amp;t=49374371256902e16a3c6e04bfe2e656" srcset="/img/loading.gif" lazyload alt="您是神/bx,我是shabby/kk"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%9F%E6%9C%9B/" class="print-no-link">#期望</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>期望</div>
+      <div>http://lnyxqwq.github.io/2023/08/15/期望/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>lnyx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/15/%E7%BD%91%E7%BB%9C%E6%B5%81%E7%9B%B8%E5%85%B3/" title="网络流相关">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">网络流相关</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/15/%E5%B9%B3%E9%9D%A2%E5%9B%BE%E5%AF%B9%E5%81%B6%E5%9B%BE/" title="平面图对偶图">
+                        <span class="hidden-mobile">平面图对偶图</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

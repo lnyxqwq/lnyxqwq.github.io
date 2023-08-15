@@ -16,24 +16,22 @@
   <meta name="author" content="lnyx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="gym103687K. Dynamic Reachability 首先看到这个巨大的时限 $12\operatorname{s}$ ，盲猜一手是 $bitset$ 或者是分块结果两个都有 最直观的想法肯定是直接搜，复杂度是 $O((n+m)q)$ 的，不可以接受，但是这种做法太没有拓展性了，考虑一些有拓展性的做法，发现一般图传递闭包是 $O(\frac{n^3}{\omega})$，但是拓扑图的传">
+    <meta name="description" content="最大流 无源汇上下界最大流 设第 $i$ 条边的流量需要在 $[l_i,r_i]$ 中首先考虑将每条边加上流量 $l_i$，现在边权限制就是 $[0,r_i-l_i]$，但是这样流量就不守恒了，寄。 考虑怎么让流量守恒，建立超级源汇点，设现在每个点入流量为 $in_i$，出流量为 $out_i$，如果 $in_i&gt;out_i$，那么就让超级源点向点 $i$ 连一条流量为 $in_i-out_">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shabby ds">
-<meta property="og:url" content="http://lnyxqwq.github.io/2023/08/15/shabby%20ds/index.html">
+<meta property="og:title" content="网络流相关">
+<meta property="og:url" content="http://lnyxqwq.github.io/2023/08/15/%E7%BD%91%E7%BB%9C%E6%B5%81%E7%9B%B8%E5%85%B3/index.html">
 <meta property="og:site_name" content="o(*≧▽≦)ツ">
-<meta property="og:description" content="gym103687K. Dynamic Reachability 首先看到这个巨大的时限 $12\operatorname{s}$ ，盲猜一手是 $bitset$ 或者是分块结果两个都有 最直观的想法肯定是直接搜，复杂度是 $O((n+m)q)$ 的，不可以接受，但是这种做法太没有拓展性了，考虑一些有拓展性的做法，发现一般图传递闭包是 $O(\frac{n^3}{\omega})$，但是拓扑图的传">
+<meta property="og:description" content="最大流 无源汇上下界最大流 设第 $i$ 条边的流量需要在 $[l_i,r_i]$ 中首先考虑将每条边加上流量 $l_i$，现在边权限制就是 $[0,r_i-l_i]$，但是这样流量就不守恒了，寄。 考虑怎么让流量守恒，建立超级源汇点，设现在每个点入流量为 $in_i$，出流量为 $out_i$，如果 $in_i&gt;out_i$，那么就让超级源点向点 $i$ 连一条流量为 $in_i-out_">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.emojiall.com/img/platform/qq/074@2x.gif">
-<meta property="article:published_time" content="2023-08-15T11:56:40.000Z">
-<meta property="article:modified_time" content="2023-08-15T11:56:54.261Z">
+<meta property="article:published_time" content="2023-08-15T12:56:33.000Z">
+<meta property="article:modified_time" content="2023-08-15T12:56:46.183Z">
 <meta property="article:author" content="lnyx">
-<meta property="article:tag" content="ds">
+<meta property="article:tag" content="网络流">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.emojiall.com/img/platform/qq/074@2x.gif">
   
   
   
-  <title>shabby ds - o(*≧▽≦)ツ</title>
+  <title>网络流相关 - o(*≧▽≦)ツ</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="shabby ds"></span>
+            <span id="subtitle" data-typed-text="网络流相关"></span>
           
         </div>
 
@@ -224,7 +222,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-15 19:56" pubdate>
+        <time datetime="2023-08-15 20:56" pubdate>
           2023年8月15日 晚上
         </time>
       </span>
@@ -236,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          3.6k 字
         
       </span>
     
@@ -247,7 +245,7 @@
         
         
         
-          10 分钟
+          31 分钟
         
       </span>
     
@@ -284,22 +282,83 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">shabby ds</h1>
+            <h1 id="seo-header">网络流相关</h1>
             
             
               <div class="markdown-body">
                 
-                <h4 id="gym103687K-Dynamic-Reachability"><a target="_blank" rel="noopener" href="https://codeforces.com/gym/103687/problem/K">gym103687K. Dynamic Reachability</a></h4>
-<p>首先看到这个巨大的时限 $12\operatorname{s}$ ，盲猜一手是 $bitset$ 或者是分块<s>结果两个都有</s></p>
-<p>最直观的想法肯定是直接搜，复杂度是 $O((n+m)q)$ 的，不可以接受，但是这种做法太没有拓展性了，考虑一些有拓展性的做法，发现一般图传递闭包是 $O(\frac{n^3}{\omega})$，但是拓扑图的传递闭包是 $O(\frac{nm}{\omega})$ ，考虑把他缩点成一个拓扑图然后拓扑排序，时间复杂度 $O((n+m+\frac{nm}{\omega})q)$ <s>更加</s>不能接受了，但是这个看起来就比上面那个高级很多，因为我们能求出整张图上每个点能到达的所有点，这个是上面做不到的，而且每次修改只会改一条边，所以图不会产生太大的变化</p>
-<p>这时候就感觉应该是分块了，我们把每 $B$ 个询问放到一块做，设这 $B$ 个操作里面涉及到的点为关键点，涉及到的边为关键边，发现我们就是问关键点的连通性，我们对于每个点维护一个关键点的 $bitset$ ，表示这个点能到达的关键点，通过黑色的非关键边跑拓扑排序求出，这样就在不考虑关键边的情况下建出了不含关键边的关键点新图，因为我 $bitset$ 只维护关键点，所以复杂度就是 $O(\frac{mB}{\omega}q)$</p>
-<p>先不管关键边，思考怎么查询，直观想法是继续拓扑排序，但是这样没有拓展性，因为我不可能建出新图后递归上面那坨答辩算法，因为万一是我建出来的就是拓扑图就寄了不能递归了，所以考虑一开始就提出的 $bfs$ ，发现现在的图很小了，只有 $B$ 个点 $B^2$ 条边，直接跑复杂度是 $O((B+B^2)q)$ 的。</p>
-<p>现在来分析一下复杂度，将上面的答辩加起来是 $O(\frac{q}{B}(n+m+\frac{mB}{\omega})+(B+B^2)q)$ ，化简一下是 $O(\frac{mq}{\omega}+\frac{q}{B}(n+m)+B^2q)$，根号平衡一下 $B$ 发现大概是 $(n+m)^{\frac{1}{3}}$ ，然后就结束了……吗？</p>
-<p>算一下复杂度大概是 $6e8$ 左右，然后我们就开心的写，然后就 $T$ 了 <img src="https://www.emojiall.com/img/platform/qq/074@2x.gif" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>发现有一个神奇的东西，用 $bitset$ 优化 $bfs$ 可以做到 $O(n+\frac{n^2}{\omega})$ ，现在复杂度就是 $O(\frac{mq}{\omega}+\frac{q}{B}(n+m)+\frac{B^2}{\omega}q)$ 了，复杂度大概是 $2.5e8$ ，我也不知道，反正就是能过了</p>
-<h4 id="gym105065B-Call-Me-Call-Me"><a target="_blank" rel="noopener" href="https://codeforces.com/gym/104065/problem/B">gym105065B. Call Me Call Me</a></h4>
-<p>15s 时限我跑了14476 ms。</p>
-<p>lxl 讲的</p>
+                <h3 id="最大流">最大流</h3>
+<h4 id="无源汇上下界最大流">无源汇上下界最大流</h4>
+<p>设第 $i$ 条边的流量需要在 $[l_i,r_i]$ 中首先考虑将每条边加上流量 $l_i$，现在边权限制就是 $[0,r_i-l_i]$，但是这样流量就不守恒了，寄。</p>
+<p>考虑怎么让流量守恒，建立超级源汇点，设现在每个点入流量为 $in_i$，出流量为 $out_i$，如果 $in_i&gt;out_i$，那么就让超级源点向点 $i$ 连一条流量为 $in_i-out_i$ 的边，如果 $out_i&gt;in_i$，那么就让点 $i$ 向超级汇点连一条流量为 $out_i-in_i$ 的边，这样流量就守恒了，设超级源点向外面连接的边的流量和为 $sum$，如果最大流等于 $sum$ 则说明有可行流，反之没有。</p>
+<p>我太菜了不会证明，网上搜到的也看不懂/ng，感性理解一下就是对于一个点 $x$，如果是入流量大于出流量，现在我图上这个点之流出去了 $out_i$，还少 $in_i-out_i$，我们通过超级源点补上，入流量小于出流量同理。我们从超级源点流向超级汇点的一条路径就相当于给这些边加上这些流量，使得在原图（不加源汇）上流量平衡。</p>
+<h4 id="有源汇上下界可行流">有源汇上下界可行流</h4>
+<p>跟上面基本一样，发现上面我们的做法需要让所有点流量守恒，但是现在源点汇点流量不守恒，但是因为源点流出的和汇点流入的肯定一样，所以我们加一条 $(T,S)$，边权限制是 $[0,INF]$ 的边就好了。</p>
+<h4 id="有源汇上下界最大流">有源汇上下界最大流</h4>
+<p>发现我们在”有源汇上下界可行流“中加入的新边的流量就是从 $S$ 到 $T$ 的可行流流量，这个不一定是最大的，我们直接在残量网络上再跑一遍最大流就好了，这里需要把我们所有加的点和边全部删掉，不难发现是正确的。</p>
+<h4 id="有源汇上下界最小流">有源汇上下界最小流</h4>
+<p>根据”有源汇上下界最大流“的启发，我们可以在残量网络上做一些东西来达到我们的目的，所以最小流就是可行流流量减去从 $T$ 到 $S$ 的最大流。</p>
+<h3 id="最小割">最小割</h3>
+<h4 id="最小割的构造方案">最小割的构造方案</h4>
+<p>从源点出发只走没有满流的边，将这些点标记，如果一条边的 $s$ 被标记了并且 $t$ 没有被标记，那么这条边就是割边。</p>
+<p>证明：跑完最小割后源点和汇点在残量网络上是不连通的，我们标记的点全是在残量网络上和源点连通的点，割边就显然是这些了。</p>
+<h4 id="最小割的可行边与必须边">最小割的可行边与必须边</h4>
+<p>在残量网络上面缩点，不难发现如果一条边的起点 $s$ 和终点 $t$ 在同一个强连通分量里面一定不会成为割边，因为一定有另一条从 $s$ 到 $t$ 的边，我把流量换到这边就行了。</p>
+<p>如果一条边的 $s$ 和 $t$ 不在一个强连通分量里面则有可能成为割边（如果有流量到达 $s$ 时需要割掉，但是也有可能在前面已经割掉过一些边使得不可能有流量到这里），考虑什么边是必须割掉的，不难发现一定是直接从源点的强连通分量连到汇点的强连通分量的边（因为不可能通过割掉一些边使流量到不了 $s$）。</p>
+<h3 id="套路">套路</h3>
+<h4 id="最大权闭合子图">最大权闭合子图</h4>
+<blockquote>
+<p>定义一个有向图 $G(V,E)$ 的闭合子图 $V’$ 为：若 $(u,v)\in E$ 并且 $u \in V’$，则 $v \in V’$，对每个点定义一个权值 $val_i$，定义有向图 $G(V,E)$ 的闭合子图 $V’$ 的权值为 $\sum\limits_{u \in V’}val_u$，现在给定一张有向图，求他的最大权闭合子图。</p>
+</blockquote>
+<p>首先有一个 naive 的想法就是将所有权值大于 $0$ 的点全部选上，但是发现有可能这些正权点后面有很多负权点，导致选了还亏了，然后就寄了，现在考虑通过网络流建图修正这个东西。</p>
+<p>发现我们现在是要删点，考虑从最小割入手，一个天降的思路就是我们建出超级源汇，让源点向所有的 $val&gt;0$ 的点 $u$ 建一条 $(S,u,val_u)$ 的边，这样割掉一条这样的边就等于不选这个点了，发现还有可能是我们正权点的贡献将所有他们到达的负权点贡献抵消了，也就是把负权点也选上，⚪来我们图只建了一半，现在就正好把另一半补上了，对于所有的 $val \le 0$ 的点 $u$ 我们建一条 $(u,T,-val_u)$ 的边，这样割掉这样的边就等于选上这个负权点，将负权点和正权点用原图连接，因为不能割原图的点，所以边权设为 $INF$，这样就做完了，最后答案为 $\sum\limits_{u\in G}[val_u&gt;0]val_u-flow$ ，其中 $flow$ 就是最小割，根据上面的推断，不难输出方案。</p>
+<h4 id="联通块">联通块</h4>
+<blockquote>
+<p>给出 $k$ 棵树，每棵树有 $n$ 个点，给定每个数的权值 $A$，求一个权值和最大的数的集合，使得它在 $k$ 棵树上都是连通块</p>
+<p>$n\le 50000$</p>
+</blockquote>
+<p>假设固定一个根节点，那么就等于我如果选 $i$，那么就需要将 $i$ 在所有树上的父亲都选上，这玩意就是一个最大权闭合子图，但是现在不固定根节点，考虑对第一棵树进行点分治，将重心作为必须选的点，根据主定理这样复杂度不变。</p>
+<h4 id="无名氏1">无名氏1</h4>
+<blockquote>
+<p>给出一张有向图，每条边容量为 $1$，每个点有一个权值 $c_i$，要求选一个边的子集，使得 $\max\limits_{u\in V}|c_u-out_u+in_u|$ 最小，其中 $in_i,out_i$ 分别代表点 $i$ 的入度出度。</p>
+<p>$n,m\le 1000$</p>
+</blockquote>
+<p>首先最大值最小考虑二分，现在我们知道答案上界 $x$，假设入度为，那么出度范围就是 $[max(0,in_u+c_u-x),in_u+c_u+x]$（就是列不等式然后拆开），建出超级源汇，对于出度不为 $0$ 的点连前面范围的流量，对于出度为 $0$ 的点也连一个类似的东西，跑上下界网络流就好了。</p>
+<h4 id="洛谷-P4313-文理分科"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4313">洛谷 P4313 文理分科</a></h4>
+<p>考虑最小割，考虑算出不需要的权值，然后用所有的减去，对于同学 $(i,j)$ 让源点向他连一条 $art_{i,j}$ 的边，割掉这条边表示让这个同学选理科，然后让他向汇点连一条 $science_{i,j}$ 的边，割掉表示让这个同学选文科。</p>
+<p>现在还有和周围选的分科相同的没有处理，对于每个同学 $(i,j)$ 新建点， 让所有与 $(i,j)$ 相邻的点向他连一条边权为 $+\infty$ 的边，然后这个点再向汇点连一条边权为 $sam_science_{i,j}$ 的边，这样如果我割掉的全是文科那么我肯定不会流过来，不用割掉，否则必须割掉，和原问题等价，相同的选文科的同理。</p>
+<h4 id="S2OJ-1810-【2017-3-长乐省选集训-Day5-T3】炮塔"><a target="_blank" rel="noopener" href="https://sjzezoj.com/problem/1810">S2OJ #1810. 【2017.3 长乐省选集训 Day5 T3】炮塔</a></h4>
+<p>数据范围很小，考虑一种非常暴力的方法，我们对于一个炮塔都建一排点，表示这个炮塔打了多远（这个点前面的边权表示打了多少人），发现限制不好解决，考虑从最小割入手，发现这玩意建出来的图跟<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3227">切糕</a>很像，跟这个题一样，考虑假设炮塔 $x,y$ 互相影响，如果 $x$ 攻击距离为 $len_x$ 时 $y$ 攻击距离要小于等于 $len_y$，让 $len_y$ 对应的点向 $len_x$ 对应的点连一条边权为 $+\infty$ 的边，发现我要是炮塔 $y$ 的距离大于 $len_y$ 则并没有割掉任何东西，所以只能选 $len_y$ 之前的点。</p>
+<p><s>这玩意是真jb难写</s></p>
+<h4 id="无名氏2">无名氏2</h4>
+<blockquote>
+<p>给出一张混合图（即有有向边也有无向边的图），你需要给每一条无向边定向，使得定向后的图存在欧拉回路。</p>
+<p>$n \le 10000,m \le 30000$</p>
+</blockquote>
+<p>发现这玩意跟无源汇上下界可行流处理完第一步之后很像，就是要实现流量平衡，直接跟无源汇上下界可行流处理方法一样就好了。</p>
+<h4 id="DAG-旅游">$DAG$ 旅游</h4>
+<blockquote>
+<p>给定一张 $DAG$，一个人从 $S$ 出发开始旅游</p>
+<p>如果当前点有出边，就等概率选一条出去，否则结束旅游</p>
+<p>现在我可以在满足 $k$ 个形如 $(x,y,z)$ 的限制的情况下删掉一些边，使得旅游经过的期望边数最大。</p>
+<p>限制 $(x,y,z)$ 表示如果删掉 $(x,y)$，那么 $(x,z)$ 也需要被删掉。</p>
+<p>$n\le 50,m\le 500,k \le 2000$</p>
+</blockquote>
+<h4 id="S2OJ-1422-Floodfill"><a target="_blank" rel="noopener" href="https://sjzezoj.com/problem/1422">S2OJ #1422. Floodfill</a></h4>
+<blockquote>
+<p>给出两张 $n\times m$ 的黑白图像 $A,B$，可以操作无限次，每次操作翻转 $A$ 里面的一个极大的同色连通块，求操作若干次后 $A$ 和 $B$ 最少的不同色位置数量。</p>
+<p>$n,m\le 100$</p>
+</blockquote>
+<p>首先肯定对于一个点我只会操作一次（废话），发现我操作后就和原来旁边的同色连通块颜色相同了，相当于合并了，现在就不能翻转周围的连通块了，因为这样会连带操作当前连通块，所以等于就是我操作的所有极大连通块是一个独立集（把相邻看成连边的图），现在将问题简化成：给定一张二分图，对于一个点，若不操作则贡献为 $a_i$，若操作则贡献为 $b_i$，现在选出一个操作的点集 $S$，要求 $S$ 是一个独立集，求每个点权值和最大是多少。考虑网络流建图，对于一个白点 $u$ 连 $(S,u,b_i),(u,T,a_i)$ ，对于一个黑点 $u$ 连 $(S,u,a_i),(u,T,b_i)$，对于一个在原图上的一条边 $(u,v)$，设 $u$ 为白点，连 $(u,v,INF)$，从最小割考虑，割掉的为不选的，如果白点<strong>割掉</strong>的是操作，则黑点什么都行，否则黑点只能是不操作，而黑点对白点没有限制，因为可以两个都不操作，所以建图是正确的。</p>
+<p><a target="_blank" rel="noopener" href="https://sjzezoj.com/submission/77437">code</a></p>
+<h4 id="“弯人”">“弯人”</h4>
+<p><s>我是直的</s></p>
+<h4 id="DeerInZooDivOne">DeerInZooDivOne</h4>
+<blockquote>
+<p>在树上选择两个尽量大的不相交的同构的连通块</p>
+<p>$n \le 50$</p>
+</blockquote>
+<h4 id="CF739E-Gosha-is-hunting"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF739E">CF739E Gosha is hunting</a></h4>
 
                 
               </div>
@@ -312,7 +371,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/ds/" class="print-no-link">#ds</a>
+        <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" class="print-no-link">#网络流</a>
       
     </div>
   
@@ -324,8 +383,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>shabby ds</div>
-      <div>http://lnyxqwq.github.io/2023/08/15/shabby ds/</div>
+      <div>网络流相关</div>
+      <div>http://lnyxqwq.github.io/2023/08/15/网络流相关/</div>
     </div>
     <div class="license-meta">
       
@@ -369,9 +428,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/15/%E7%AB%9E%E8%B5%9B%E5%9B%BE%E5%85%AD%E6%AD%A5%E8%B5%B0/" title="竞赛图六步走">
+                      <a href="/2023/08/15/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="线性代数学习笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">竞赛图六步走</span>
+                        <span class="hidden-mobile">线性代数学习笔记</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -379,8 +438,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/15/S2%E9%A2%98%E5%8D%95%EF%BC%9ANOIP%E5%89%8D%E5%BB%BA%E8%AE%AE%E5%81%9A%E7%9A%84%E9%A2%98/" title="S2题单：NOIP前建议做的题">
-                        <span class="hidden-mobile">S2题单：NOIP前建议做的题</span>
+                      <a href="/2023/08/15/%E6%9C%9F%E6%9C%9B/" title="期望">
+                        <span class="hidden-mobile">期望</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

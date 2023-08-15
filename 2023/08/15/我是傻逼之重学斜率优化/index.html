@@ -16,24 +16,27 @@
   <meta name="author" content="lnyx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="gym103687K. Dynamic Reachability 首先看到这个巨大的时限 $12\operatorname{s}$ ，盲猜一手是 $bitset$ 或者是分块结果两个都有 最直观的想法肯定是直接搜，复杂度是 $O((n+m)q)$ 的，不可以接受，但是这种做法太没有拓展性了，考虑一些有拓展性的做法，发现一般图传递闭包是 $O(\frac{n^3}{\omega})$，但是拓扑图的传">
+    <meta name="description" content="​           前情提要：初中的时候我是个傻逼，想看博主笑话的一定不要走 $2019.8.23$，我进入了石家庄石门实验学校的 $28$ 班。 教师配置： 语文：姚捧洁 数学：刘英会 英语：王欢（班主任） 物理：白红红 化学：杨晓琳 历史：孙一文 地理：赵兴 政治：有 $n$ 个，就记得在初二时是李楠，在初三时是王梦丽 生物：早忘了 剩下的以后再说吧……  斜率优化是什么？ 当你有一个形">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shabby ds">
-<meta property="og:url" content="http://lnyxqwq.github.io/2023/08/15/shabby%20ds/index.html">
+<meta property="og:title" content="我是傻逼之重学斜率优化">
+<meta property="og:url" content="http://lnyxqwq.github.io/2023/08/15/%E6%88%91%E6%98%AF%E5%82%BB%E9%80%BC%E4%B9%8B%E9%87%8D%E5%AD%A6%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="o(*≧▽≦)ツ">
-<meta property="og:description" content="gym103687K. Dynamic Reachability 首先看到这个巨大的时限 $12\operatorname{s}$ ，盲猜一手是 $bitset$ 或者是分块结果两个都有 最直观的想法肯定是直接搜，复杂度是 $O((n+m)q)$ 的，不可以接受，但是这种做法太没有拓展性了，考虑一些有拓展性的做法，发现一般图传递闭包是 $O(\frac{n^3}{\omega})$，但是拓扑图的传">
+<meta property="og:description" content="​           前情提要：初中的时候我是个傻逼，想看博主笑话的一定不要走 $2019.8.23$，我进入了石家庄石门实验学校的 $28$ 班。 教师配置： 语文：姚捧洁 数学：刘英会 英语：王欢（班主任） 物理：白红红 化学：杨晓琳 历史：孙一文 地理：赵兴 政治：有 $n$ 个，就记得在初二时是李楠，在初三时是王梦丽 生物：早忘了 剩下的以后再说吧……  斜率优化是什么？ 当你有一个形">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.emojiall.com/img/platform/qq/074@2x.gif">
-<meta property="article:published_time" content="2023-08-15T11:56:40.000Z">
-<meta property="article:modified_time" content="2023-08-15T11:56:54.261Z">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/kf1vctl66j.png">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/mam5wcquzc.png">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/z9x2c71kbs.png">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/el85jjsvk2.png">
+<meta property="article:published_time" content="2023-08-15T12:56:59.000Z">
+<meta property="article:modified_time" content="2023-08-15T12:57:17.602Z">
 <meta property="article:author" content="lnyx">
-<meta property="article:tag" content="ds">
+<meta property="article:tag" content="斜率优化">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.emojiall.com/img/platform/qq/074@2x.gif">
+<meta name="twitter:image" content="https://sjzezoj.com/image_hosting/kf1vctl66j.png">
   
   
   
-  <title>shabby ds - o(*≧▽≦)ツ</title>
+  <title>我是傻逼之重学斜率优化 - o(*≧▽≦)ツ</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="shabby ds"></span>
+            <span id="subtitle" data-typed-text="我是傻逼之重学斜率优化"></span>
           
         </div>
 
@@ -224,7 +227,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-15 19:56" pubdate>
+        <time datetime="2023-08-15 20:56" pubdate>
           2023年8月15日 晚上
         </time>
       </span>
@@ -236,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.6k 字
         
       </span>
     
@@ -247,7 +250,7 @@
         
         
         
-          10 分钟
+          14 分钟
         
       </span>
     
@@ -284,22 +287,52 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">shabby ds</h1>
+            <h1 id="seo-header">我是傻逼之重学斜率优化</h1>
             
             
               <div class="markdown-body">
                 
-                <h4 id="gym103687K-Dynamic-Reachability"><a target="_blank" rel="noopener" href="https://codeforces.com/gym/103687/problem/K">gym103687K. Dynamic Reachability</a></h4>
-<p>首先看到这个巨大的时限 $12\operatorname{s}$ ，盲猜一手是 $bitset$ 或者是分块<s>结果两个都有</s></p>
-<p>最直观的想法肯定是直接搜，复杂度是 $O((n+m)q)$ 的，不可以接受，但是这种做法太没有拓展性了，考虑一些有拓展性的做法，发现一般图传递闭包是 $O(\frac{n^3}{\omega})$，但是拓扑图的传递闭包是 $O(\frac{nm}{\omega})$ ，考虑把他缩点成一个拓扑图然后拓扑排序，时间复杂度 $O((n+m+\frac{nm}{\omega})q)$ <s>更加</s>不能接受了，但是这个看起来就比上面那个高级很多，因为我们能求出整张图上每个点能到达的所有点，这个是上面做不到的，而且每次修改只会改一条边，所以图不会产生太大的变化</p>
-<p>这时候就感觉应该是分块了，我们把每 $B$ 个询问放到一块做，设这 $B$ 个操作里面涉及到的点为关键点，涉及到的边为关键边，发现我们就是问关键点的连通性，我们对于每个点维护一个关键点的 $bitset$ ，表示这个点能到达的关键点，通过黑色的非关键边跑拓扑排序求出，这样就在不考虑关键边的情况下建出了不含关键边的关键点新图，因为我 $bitset$ 只维护关键点，所以复杂度就是 $O(\frac{mB}{\omega}q)$</p>
-<p>先不管关键边，思考怎么查询，直观想法是继续拓扑排序，但是这样没有拓展性，因为我不可能建出新图后递归上面那坨答辩算法，因为万一是我建出来的就是拓扑图就寄了不能递归了，所以考虑一开始就提出的 $bfs$ ，发现现在的图很小了，只有 $B$ 个点 $B^2$ 条边，直接跑复杂度是 $O((B+B^2)q)$ 的。</p>
-<p>现在来分析一下复杂度，将上面的答辩加起来是 $O(\frac{q}{B}(n+m+\frac{mB}{\omega})+(B+B^2)q)$ ，化简一下是 $O(\frac{mq}{\omega}+\frac{q}{B}(n+m)+B^2q)$，根号平衡一下 $B$ 发现大概是 $(n+m)^{\frac{1}{3}}$ ，然后就结束了……吗？</p>
-<p>算一下复杂度大概是 $6e8$ 左右，然后我们就开心的写，然后就 $T$ 了 <img src="https://www.emojiall.com/img/platform/qq/074@2x.gif" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>发现有一个神奇的东西，用 $bitset$ 优化 $bfs$ 可以做到 $O(n+\frac{n^2}{\omega})$ ，现在复杂度就是 $O(\frac{mq}{\omega}+\frac{q}{B}(n+m)+\frac{B^2}{\omega}q)$ 了，复杂度大概是 $2.5e8$ ，我也不知道，反正就是能过了</p>
-<h4 id="gym105065B-Call-Me-Call-Me"><a target="_blank" rel="noopener" href="https://codeforces.com/gym/104065/problem/B">gym105065B. Call Me Call Me</a></h4>
-<p>15s 时限我跑了14476 ms。</p>
-<p>lxl 讲的</p>
+                <blockquote>
+<p>​           前情提要：初中的时候我是个傻逼，<strong>想看</strong>博主笑话的一定不要走</p>
+<p>$2019.8.23$，我进入了石家庄石门实验学校的 $28$ 班。</p>
+<p>教师配置：</p>
+<p>语文：姚捧洁</p>
+<p>数学：刘英会</p>
+<p>英语：王欢（班主任）</p>
+<p>物理：白红红</p>
+<p>化学：杨晓琳</p>
+<p>历史：孙一文</p>
+<p>地理：赵兴</p>
+<p>政治：有 $n$ 个，就记得在初二时是李楠，在初三时是王梦丽</p>
+<p>生物：早忘了</p>
+<p>剩下的以后再说吧……</p>
+</blockquote>
+<h3 id="斜率优化是什么？">斜率优化是什么？</h3>
+<p>当你有一个形如 $f_i=f_j+a_i\times b_j+c_i$ 的 $dp$ 柿子的时候，可以用这个来做，我们让右边只留下和 $j$ 相关的项，现在柿子就变成了 $f_i-c_i-a_i\times b_j=f_j$，发现现在左边是一条 $f(x)=-a_i\times x +f_i-c_i$ 的直线，现在我对于每个 $j$ 可以看成一个 $(b_j,f_j)$ 的点，现在我们需要找到一个点使得经过他的 $f(x)$ 中 $f_i$ 值最小/大，然后我们就能用一些神奇的东西来优化了。</p>
+<h3 id="Problem：">Problem：</h3>
+<h4 id="洛谷-P3195-HNOI2008-玩具装箱"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3195">洛谷 P3195 [HNOI2008] 玩具装箱</a></h4>
+<p>朴素的 $dp$ 柿子很好列出：</p>
+<p>设 $f_i$ 表示将前 $i$ 个玩具装箱的最小代价，我们设 $sum_i=\sum\limits_{j=1}^{i}c_j+i$，转移有 $f_i=\min\limits_{j=1}^{i-1}{f_j+(sum_i-sum_j+1-L)^2}$，这个万一不太好做，设 $a_i=sum_i+1-L$，把平方项拆开，有 $f_i=\min\limits_{j=1}^{i-1}{f_j+{a_i}^2-2a_ib_j+b_j^2}=\min\limits_{j=1}^{i-1}{f_j-2a_isum_j+{sum_j}^2}+{a_i}^2$。</p>
+<p>这玩意太乱了，看着就恶心，整理一下，设 $b_i=f_i+{sum_i}^2$，现在把原式化简成了 $f_i=\min\limits_{j=1}^{i-1}{b_j-2a_isum_j}+{a_i}^2$，这玩意是可以用斜率优化优化，首先先分析一下性质，输入全是正数，所以 $b_i,sum_i$ 是单调不降的，我们考虑维护一个点集 $(sum_i,b_i)$ 的下凸壳，发现对于点 $i,i+1$，考虑长下图这样：</p>
+<p><img src="https://sjzezoj.com/image_hosting/kf1vctl66j.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>如果你现在线段是这样的：</p>
+<p><img src="https://sjzezoj.com/image_hosting/mam5wcquzc.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>那么发现肯定是 $i$ 优。</p>
+<p>如果你现在线段是这样的：</p>
+<p><img src="https://sjzezoj.com/image_hosting/z9x2c71kbs.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>肯定是选 $i+1$ 优。</p>
+<p>可以看出来是越陡选后面越优（当然你也可以从决策单调性上来分析）。</p>
+<p>所以维护一个指针就好了。</p>
+<p>那么如果 $b_i$ 不单调怎么办？</p>
+<p>这玩意就没有单调性了，你考虑凸壳的样子，肯定是这样的：</p>
+<p><img src="https://sjzezoj.com/image_hosting/el85jjsvk2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>发现凸壳上的边斜率是单调的，假设你现在的斜率是 $k$，你找到的转移点是 $i$，那么肯定 $slope(i,i+1)&gt;k,slope(i-1,i)\le k$，这就提示我们在凸壳上二分这个点，复杂度多一个 $\log$。</p>
+<h4 id="洛谷-P4655-CEOI2017-Building-Bridges"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4655">洛谷 P4655 [CEOI2017] Building Bridges</a></h4>
+<p>还是很好列出朴素 $dp$ 方程：</p>
+<p>设 $f_i$ 表示通过桥梁把第 $1$ 根柱子和第 $i$ 根柱子连接的最小代价，设 $sum_i=\sum\limits_{j=1}^{i}w_i$，转移有 $f_i=\min\limits_{j=1}^{i-1}{f_j+(h_i-h_j)^2+sum_{i-1}-sum_j}$。</p>
+<p>还是拆开平方项：$f_i=\min\limits_{j=1}^{i-1}{f_j-2h_ih_j+{h_j}^2-sum_j}+{h_i}^2+sum_{i-1}$</p>
+<p>还是简化，设 $a_i=f_i+{h_i}^2-sum_i$，原始有 $f_i=\min\limits_{j=1}^{i-1}{a_j-2h_ih_j}+{h_i}^2+sum_{i-1}$</p>
+<p>现在你的每个点应该为 $(h_i,a_i)$，发现 $h_i,a_i$ 都不单调，全寄，所以有一个很简单的方法，我们也不移项了，直接把右边看成一条 $f_i(x)=-2xh_i+a_i$ 的直线，然后直接插进李超树里面，最后单点查询就好了，时间复杂度 $O(n\log n)$。</p>
 
                 
               </div>
@@ -312,7 +345,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/ds/" class="print-no-link">#ds</a>
+        <a href="/tags/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/" class="print-no-link">#斜率优化</a>
       
     </div>
   
@@ -324,8 +357,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>shabby ds</div>
-      <div>http://lnyxqwq.github.io/2023/08/15/shabby ds/</div>
+      <div>我是傻逼之重学斜率优化</div>
+      <div>http://lnyxqwq.github.io/2023/08/15/我是傻逼之重学斜率优化/</div>
     </div>
     <div class="license-meta">
       
@@ -364,29 +397,6 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2023/08/15/%E7%AB%9E%E8%B5%9B%E5%9B%BE%E5%85%AD%E6%AD%A5%E8%B5%B0/" title="竞赛图六步走">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">竞赛图六步走</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2023/08/15/S2%E9%A2%98%E5%8D%95%EF%BC%9ANOIP%E5%89%8D%E5%BB%BA%E8%AE%AE%E5%81%9A%E7%9A%84%E9%A2%98/" title="S2题单：NOIP前建议做的题">
-                        <span class="hidden-mobile">S2题单：NOIP前建议做的题</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 

@@ -16,24 +16,26 @@
   <meta name="author" content="lnyx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="gym103687K. Dynamic Reachability 首先看到这个巨大的时限 $12\operatorname{s}$ ，盲猜一手是 $bitset$ 或者是分块结果两个都有 最直观的想法肯定是直接搜，复杂度是 $O((n+m)q)$ 的，不可以接受，但是这种做法太没有拓展性了，考虑一些有拓展性的做法，发现一般图传递闭包是 $O(\frac{n^3}{\omega})$，但是拓扑图的传">
+    <meta name="description" content="ABC212G Power Pair 推柿子题 $\sum\limits_{x}^{P-1}\sum\limits_{y}^{P-1} \exists n \in \mathbb{N}\ x^n \equiv y(\bmod P)$ $1+\sum\limits_{x&#x3D;1}^{P-1}\sum\limits_{y&#x3D;1}^{P-1} \exists n \in \mathbb{N}\ x^n \eq">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shabby ds">
-<meta property="og:url" content="http://lnyxqwq.github.io/2023/08/15/shabby%20ds/index.html">
+<meta property="og:title" content="ABC G Ex 简要题解">
+<meta property="og:url" content="http://lnyxqwq.github.io/2023/08/15/ABC%20G%20Ex%20%E7%AE%80%E8%A6%81%E9%A2%98%E8%A7%A3/index.html">
 <meta property="og:site_name" content="o(*≧▽≦)ツ">
-<meta property="og:description" content="gym103687K. Dynamic Reachability 首先看到这个巨大的时限 $12\operatorname{s}$ ，盲猜一手是 $bitset$ 或者是分块结果两个都有 最直观的想法肯定是直接搜，复杂度是 $O((n+m)q)$ 的，不可以接受，但是这种做法太没有拓展性了，考虑一些有拓展性的做法，发现一般图传递闭包是 $O(\frac{n^3}{\omega})$，但是拓扑图的传">
+<meta property="og:description" content="ABC212G Power Pair 推柿子题 $\sum\limits_{x}^{P-1}\sum\limits_{y}^{P-1} \exists n \in \mathbb{N}\ x^n \equiv y(\bmod P)$ $1+\sum\limits_{x&#x3D;1}^{P-1}\sum\limits_{y&#x3D;1}^{P-1} \exists n \in \mathbb{N}\ x^n \eq">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.emojiall.com/img/platform/qq/074@2x.gif">
-<meta property="article:published_time" content="2023-08-15T11:56:40.000Z">
-<meta property="article:modified_time" content="2023-08-15T11:56:54.261Z">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/esbf9qgy.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/jgm5x7mw.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/wzsitxdu.png">
+<meta property="article:published_time" content="2023-08-15T12:13:22.000Z">
+<meta property="article:modified_time" content="2023-08-15T12:50:24.210Z">
 <meta property="article:author" content="lnyx">
-<meta property="article:tag" content="ds">
+<meta property="article:tag" content="ABC">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.emojiall.com/img/platform/qq/074@2x.gif">
+<meta name="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/esbf9qgy.png">
   
   
   
-  <title>shabby ds - o(*≧▽≦)ツ</title>
+  <title>ABC G Ex 简要题解 - o(*≧▽≦)ツ</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +215,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="shabby ds"></span>
+            <span id="subtitle" data-typed-text="ABC G Ex 简要题解"></span>
           
         </div>
 
@@ -224,7 +226,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-15 19:56" pubdate>
+        <time datetime="2023-08-15 20:13" pubdate>
           2023年8月15日 晚上
         </time>
       </span>
@@ -236,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          5.2k 字
         
       </span>
     
@@ -247,7 +249,7 @@
         
         
         
-          10 分钟
+          44 分钟
         
       </span>
     
@@ -284,22 +286,151 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">shabby ds</h1>
+            <h1 id="seo-header">ABC G Ex 简要题解</h1>
             
             
               <div class="markdown-body">
                 
-                <h4 id="gym103687K-Dynamic-Reachability"><a target="_blank" rel="noopener" href="https://codeforces.com/gym/103687/problem/K">gym103687K. Dynamic Reachability</a></h4>
-<p>首先看到这个巨大的时限 $12\operatorname{s}$ ，盲猜一手是 $bitset$ 或者是分块<s>结果两个都有</s></p>
-<p>最直观的想法肯定是直接搜，复杂度是 $O((n+m)q)$ 的，不可以接受，但是这种做法太没有拓展性了，考虑一些有拓展性的做法，发现一般图传递闭包是 $O(\frac{n^3}{\omega})$，但是拓扑图的传递闭包是 $O(\frac{nm}{\omega})$ ，考虑把他缩点成一个拓扑图然后拓扑排序，时间复杂度 $O((n+m+\frac{nm}{\omega})q)$ <s>更加</s>不能接受了，但是这个看起来就比上面那个高级很多，因为我们能求出整张图上每个点能到达的所有点，这个是上面做不到的，而且每次修改只会改一条边，所以图不会产生太大的变化</p>
-<p>这时候就感觉应该是分块了，我们把每 $B$ 个询问放到一块做，设这 $B$ 个操作里面涉及到的点为关键点，涉及到的边为关键边，发现我们就是问关键点的连通性，我们对于每个点维护一个关键点的 $bitset$ ，表示这个点能到达的关键点，通过黑色的非关键边跑拓扑排序求出，这样就在不考虑关键边的情况下建出了不含关键边的关键点新图，因为我 $bitset$ 只维护关键点，所以复杂度就是 $O(\frac{mB}{\omega}q)$</p>
-<p>先不管关键边，思考怎么查询，直观想法是继续拓扑排序，但是这样没有拓展性，因为我不可能建出新图后递归上面那坨答辩算法，因为万一是我建出来的就是拓扑图就寄了不能递归了，所以考虑一开始就提出的 $bfs$ ，发现现在的图很小了，只有 $B$ 个点 $B^2$ 条边，直接跑复杂度是 $O((B+B^2)q)$ 的。</p>
-<p>现在来分析一下复杂度，将上面的答辩加起来是 $O(\frac{q}{B}(n+m+\frac{mB}{\omega})+(B+B^2)q)$ ，化简一下是 $O(\frac{mq}{\omega}+\frac{q}{B}(n+m)+B^2q)$，根号平衡一下 $B$ 发现大概是 $(n+m)^{\frac{1}{3}}$ ，然后就结束了……吗？</p>
-<p>算一下复杂度大概是 $6e8$ 左右，然后我们就开心的写，然后就 $T$ 了 <img src="https://www.emojiall.com/img/platform/qq/074@2x.gif" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>发现有一个神奇的东西，用 $bitset$ 优化 $bfs$ 可以做到 $O(n+\frac{n^2}{\omega})$ ，现在复杂度就是 $O(\frac{mq}{\omega}+\frac{q}{B}(n+m)+\frac{B^2}{\omega}q)$ 了，复杂度大概是 $2.5e8$ ，我也不知道，反正就是能过了</p>
-<h4 id="gym105065B-Call-Me-Call-Me"><a target="_blank" rel="noopener" href="https://codeforces.com/gym/104065/problem/B">gym105065B. Call Me Call Me</a></h4>
-<p>15s 时限我跑了14476 ms。</p>
-<p>lxl 讲的</p>
+                <h3 id="ABC212G-Power-Pair"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_abc212_g">ABC212G Power Pair</a></h3>
+<p>推柿子题</p>
+<p>$\sum\limits_{x}^{P-1}\sum\limits_{y}^{P-1} \exists n \in \mathbb{N}\ x^n \equiv y(\bmod P)$</p>
+<p>$1+\sum\limits_{x=1}^{P-1}\sum\limits_{y=1}^{P-1} \exists n \in \mathbb{N}\ x^n \equiv y(\bmod P)$</p>
+<p>考虑模 $P$ 意义下的原根 $g$ ,有 $x=g^a,y=g^b$</p>
+<p>$1+\sum\limits_{x=1}^{P-1}\sum\limits_{y=1}^{P-1} g^{an} \equiv g^{b} (\bmod P)$</p>
+<p>$1+\sum\limits_{x=1}^{P-1}\sum\limits_{y=1}^{P-1} an \equiv b (\bmod P-1)$</p>
+<p>这个可以看成一个长度为 $P-1​$ 的环，我每次在上面走 $a​$ 步，求 $b​$ 的数量，这个是 $\frac{P-1}{\gcd(a,P-1)}​$ 个。</p>
+<p>$1+\sum\limits_{a=1}^{P-1}\frac{P-1}{\gcd(a,P-1)}​$</p>
+<p>$1+\sum\limits_{d|(P-1)} \frac{P-1}{d}\sum\limits_{a=1}^{P-1}[\gcd(a,P-1)=d]$</p>
+<p>$1+\sum\limits_{d|(P-1)} \frac{P-1}{d}\varphi(\frac{P-1}{d})$</p>
+<p>现在就可以求了</p>
+<p>$1e12​$ 以内的约数数最多的数有 $6720​$ 个约数，跑不满</p>
+<p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc212/submissions/40783284">code</a></p>
+<h3 id="ABC212H-Nim-Counting"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_abc212_h">ABC212H Nim Counting</a></h3>
+<p>可以说只要会 $FWT$ 就可以切</p>
+<p>题意：给定长度为 $K​$ 的数组 $A​$ ，给定 $N​$ ，现在你要选择<strong>有</strong> $[1,N]​$ 堆石子，每一堆石子的数量 $\in A​$ ，现在玩 $nim​$ 游戏，求先手获胜的局面有多少种</p>
+<p>其实就是满足在 $x^a \times x^b=x^{a\ xor \ b}$ 下求 $[x^t]\sum\limits_{i=1}^{n}(f(x))^i$ 其中 $t \in [1,$值域$]$</p>
+<p>因为 $FWT(A+B)=FWT(A)+FWT(B),FWT(A\ xor \ B)=FWT(A) \times FWT(B)​$</p>
+<p>所以可以首先先 $FWT​$，然后对 $FWT​$ 的每一项做 $\sum\limits_{i=1}^{n}{a_x}^i=\frac{ {a_x}^{n+1} - a}{a-1}​$，然后 $IFWT​$</p>
+<p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc212/submissions/40785896">code</a></p>
+<h3 id="ABC213G-Connectivity-2"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_abc213_g">ABC213G Connectivity 2</a></h3>
+<p>小清新计数题</p>
+<p>看数据范围考虑状压</p>
+<p>设 $f_S​$ 表示现在与一联通的子图点集是 $S​$ 的方案数，转移发现不好转移，所以正难则反，用总数减去不合法</p>
+<p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc213/submissions/40575030">code</a>（这里 $f$ 为了卡常没有点 $1$</p>
+<h3 id="ABC214G-Three-Permutations"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_abc214_g">ABC214G Three Permutations</a></h3>
+<p>个人感觉非常困难</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lnyx/p/17318334.html"><strong>详细写了题解</strong></a></p>
+<h3 id="ABC214H-Collecting"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_abc214_h">ABC214H Collecting</a></h3>
+<p>洛谷题解全是扯淡的</p>
+<p>首先发现可以直接建图流，但是这样时间复杂度是 $O(nmk)​$ 的，$% 114514​$ 过不了，考虑优化</p>
+<p>发现有一个东西是 $Dijsktra​$ 求最小费用流，时间复杂度是 $O(nm+km\log m)​$ 的，时间复杂度瓶颈在一开始要求一遍 $spfa​$ ，考虑怎么建出来图没有负权边，之前的建图要建负权边是因为我要求的是最大费用最大流，发现这玩意就是最小浪费代价最大流，这玩意要怎么弄呢，首先缩点成为一个 $dag​$ ，按 $dag​$ 层数标号，我要是从一个编号为 $i​$ 的点到一个编号为 $j​$ 点的话中间的肯定选不上，要是走到这里就不走了说明后面的全选不了，这样就可以做了</p>
+<p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc214/submissions/40922908">code</a></p>
+<h3 id="ABC215G-Colorful-Candies-2"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_abc215_g">ABC215G Colorful Candies 2</a></h3>
+<p>挺傻逼的一道题</p>
+<p>但是我降智没想出来/ng</p>
+<p>退役算了/cf</p>
+<p>假设现在有 $m$ 种颜色，你选 $x$ 个球，那么选颜色 $i$ 的概率就是 $\frac{ {n \choose x} - {n-sum_i \choose x} }{n \choose x}$</p>
+<p>这样就可以 $O(n^2)$ 了</p>
+<p>然后发现本质不同的 $sum_i$ 个数时 $\sqrt n$ 级别的，所以可以 $O(n\sqrt n)$ 做了</p>
+<h3 id="ABC215H-Cabbage-Master"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_abc215_h">ABC215H Cabbage Master</a></h3>
+<p>学习到的很多</p>
+<p>很容易联想到二分图，每一个球是左部点，每一个盒子是右部点（当然做的时候不用建出来，不然就寄了，所以下面说的左部点都是对于颜色，右部点都是对于盒子），求完美匹配</p>
+<p>考虑霍尔定理</p>
+<p>$n&lt;=20$ 可以直接枚举，但是发现右部点的权值不好算，所以可以改一下枚举的定义，即我选了一些右部点，他们所有可达的左部点集合为 $S$ ，这样就可以 $FWT$ 算右部点权值了</p>
+<p>假设现在我选的左部点权值是 $x​$ ，右部点权值是 $y​$ ,第一问答案就是 $cnt=min\left{y-x+1\right}​$</p>
+<p>将不用删点特判掉之后考虑求方案数</p>
+<p>当一个左部点集合 $S$ 删去 $cnt$ 个点时没有完美匹配当且仅当 $\exists \ T \  S \in T$ 且 $T$ 的 $y-x+1=cnt$ ，为了不算重，我们钦定 $S$ 里面包含的颜色都至少被删去一个球。</p>
+<p>至于怎么求，考虑容斥</p>
+<p>先提前算出不钦定的值，然后外层枚举现在处理到第几个颜色，内层枚举集合 $S$ 现在等于时颜色编号小于 $S$ 的都已经钦定选了，然后你减去把现在枚举的颜色去掉的 $dp$ 值，仔细想想发现很正确</p>
+<p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc215/submissions/40792589">code</a></p>
+<h3 id="ABC219H-Candles"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_abc219_h">ABC219H Candles</a></h3>
+<p>可能？是套路题</p>
+<p>但是我不会/ng</p>
+<p>因为我不能记时间，所以可以考虑费用提前计算</p>
+<p>首先先思考假如蜡烛可以燃烧到负数，发现这就是 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1220">P1220 关路灯</a> ，但是现在不能燃烧到负数，也就是 $\max(0,a_i)$ ，于是就有一个思路就是在第 $i$ 根蜡烛的时候把 $a_i$ 和 $0$ 都转移一遍，因为是取 $\max$ ，所以最后答案是正确的</p>
+<p>现在我不知道有多少蜡烛是没到就会燃尽，所以我区间 $dp​$ 多记一维表示当前区间外有 $i​$ 根蜡烛未燃尽，这样就可以实现上述转移了</p>
+<p>设 $f_{l,r,i,0/1}$ 表示在区间 $[l,r]$ ，区间外有 $i$ 根蜡烛在燃烧，现在在 左/右 端点时的燃烧掉的最小值</p>
+<p>$f_{l,r+1,i,0}=\min\left{f_{l,r,i,0/1}+i \times dist+a_{r+1},f_{l,r,i+1,0/1}+i \times dist\right}​$  其他转移同理</p>
+<p>$\min​$ 中前面的就是 $r+1​$ 的熄灭了，后面的时没熄灭的</p>
+<p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc219/submissions/40618822">code</a></p>
+<h3 id="ABC230G-GCD-Permutation"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_abc230_g">ABC230G GCD Permutation</a></h3>
+<p>糗大了，做法是个傻逼玩意</p>
+<p>直接推柿子。</p>
+<p>题目要求：<br>
+$$<br>
+\sum_{i=1}^{n}\sum_{j=i}^{n}[\gcd(i,j)\neq1][\gcd(P_i,P_j)\neq1]<br>
+$$<br>
+有 $\gcd$ ，考虑莫比乌斯反演，发现莫比乌斯反演好像只能做 $\gcd(i,j)=1$ ，所以先推一下 $\sum\limits_{i=1}^{n}\sum\limits_{j=i}^{n}[\gcd(i,j)=1][\gcd(P_i,P_j)=1]$ <s>其实是我一开始看错题了</s>。</p>
+<p>首先将 $[\gcd(i,j)=1]$ 莫比乌斯反演一下：<br>
+$$<br>
+\begin{eqnarray}<br>
+&amp;\sum_{i=1}^{n}&amp;\sum_{j=i}^{n}[\gcd(i,j)=1][\gcd(P_i,P_j)=1] \<br>
+=&amp;\sum_{d=1}^{n}&amp;\mu(d)\sum_{d\mid i}^{n}\sum_{d\mid j}^{n}[\gcd(P_i,P_j)=1][i \le j] \<br>
+\end{eqnarray}<br>
+$$<br>
+然后将 $[\gcd(P_i,P_j)=1]$ 反演一下：<br>
+$$<br>
+\begin{eqnarray}<br>
+&amp;\sum_{d=1}^{n}&amp;\mu(d)\sum_{k=1}^{n}\mu(k)\sum_{d\mid i,k\mid P_i}^{n}\sum_{d\mid j,k \mid P_j}^{n}[i \le j] \<br>
+=&amp;\sum_{d=1}^{n}&amp;\mu(d)\sum_{k=1}^{n}\mu(k)\ \frac{sum(d,k) (sum(d,k)+1)}{2} \<br>
+\end{eqnarray}<br>
+$$<br>
+其中 $sum(d,k)$ 表示 $d \mid i,k \mid P_i$ 的 $i$ 的个数。</p>
+<p>不难发现对于每一个数 $i$ 最多只会对 $sum$ 数组贡献 $\log^2$ 次，因为约数个数是 $\log$ 级别的，所以时间复杂度 $O(n\log^2 n)$。</p>
+<p>现在已经会做 $\sum\limits_{i=1}^{n}\sum\limits_{j=i}^{n}[\gcd(i,j)=1][\gcd(P_i,P_j)=1]​$ ，考虑怎么转化回题目本身，考虑莫比乌斯反演的本质是依靠 $\sum\limits_{d \mid n}\mu(d)=[n=1]​$ 这个柿子搞的，现在我们要求的是跟这个正好相反的柿子，也就是说只要构造出来一个函数 $\xi(i)​$ 满足 $\sum\limits_{d \mid n}\xi(d)=[n\neq1]​$ 就可以了，这个很好构造，考虑 $\mu​$ 的定义：<br>
+$$<br>
+\mu(i) =<br>
+\begin{cases}<br>
+1 \quad n = 1 \<br>
+0 \quad \text{ $i$ 含有质因子平方}\<br>
+(-1)^k \quad \text{ $k$ 为 $i$ 的质因子个数}<br>
+\end{cases}<br>
+$$<br>
+首先因为 $n=1$ 时要求 $\xi(n)=0$ ，所以：<br>
+$$<br>
+\xi(i) =<br>
+\begin{cases}<br>
+0 \quad n = 1 \<br>
+\end{cases}<br>
+$$<br>
+然后考虑为什么当 $n\neq1$ 时 $\mu(i)=0$ ，假设 $n$ 有 $k$ 个质因子，根据定义 $\sum\limits_{d\mid n}^{n}\mu(d)=\sum\limits_{i=0}^{k}(-1)^i{k \choose i}$ ，因为有平方因子贡献为 $0$ ，所以直接枚举有几个因子就可以了。</p>
+<p>把平方质因子搞掉这个性质很好，我们可以借鉴过来，也就是我们还是不要平方因子，现在的规则就是：<br>
+$$<br>
+\xi(i) =<br>
+\begin{cases}<br>
+0 \quad n = 1 \<br>
+0 \quad \text{ $i$ 含有平方因子}\<br>
+\end{cases}<br>
+$$<br>
+现在就是只要构造出 $f_i$ 满足 $\sum\limits_{i=1}^{k}f_i{k \choose i}=1$ 就可以了，还是借鉴莫比乌斯函数，发现 $\sum\limits_{i=1}^{k}(-1)^k{k \choose i}=-1$ ，所以我们直接取反就好了。</p>
+<p>也就是现在的规则是：<br>
+$$<br>
+\xi(i) =<br>
+\begin{cases}<br>
+0 \quad n = 1 \<br>
+0 \quad \text{ $i$ 含有质因子平方}\<br>
+(-1)^{k-1} \quad \text{ $k$ 为 $i$ 的质因子个数}<br>
+\end{cases}<br>
+$$<br>
+现在我们已经构造出 $\xi$ 了，只要将上面推出来的柿子中的 $\mu$ 换成 $\xi$ 就好了。</p>
+<p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc230/submissions/42028680">code</a></p>
+<h3 id="ABC298Ex-Sum-of-Min-of-Length"><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc298/tasks/abc298_h">ABC298Ex - Sum of Min of Length</a></h3>
+<p>挺神秘的一道题</p>
+<p>题意：给你一棵树，多次询问，每次询问给定两个点 $x,y$，求 $\sum\limits_{u=1}^{n} \min(dist(u,x),dist(u,y))$</p>
+<p>如果只有一个点发现非常好求，直接换根 $dp$ 就好了，现在考虑两个点怎么做</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/esbf9qgy.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>首先肯定是要找出 $u$ 到 $v$ 的中点 $mid$ 的</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/jgm5x7mw.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>其中以 $mid$ 为子树的点肯定是到 $u$ , 而剩下的节点是到 $v$</p>
+<p>现在把式子列出来：</p>
+<p>设集合 $S$ 包含以 $mid$ 为子树的的节点（黄色方框包含的节点），集合 $T$ 包含剩下的节点（绿色方框包含的节点）</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/wzsitxdu.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>$ans=\sum\limits_{u \in S} dist(u,x)+\sum\limits_{u \in T} dist(u,y)$</p>
+<p>$ans=\sum\limits_{u=1}^{n} (dist(u,x)+dist(u,y))-(\sum\limits_{u \in S} dist(u,y)+\sum\limits_{u \in T} dist(u,x))$</p>
+<p>$ans=\sum\limits_{u=1}^{n} (dist(u,x)+dist(u,y))-(\sum\limits_{u \in S} dist(u,mid)+\sum\limits_{u \in T} dist(u,mid)+sz_{mid} \times dist(mid,y)+(n-sz_{mid}) \times dist(mid,x))$</p>
+<p>$ans=\sum\limits_{u=1}^{n} (dist(u,x)+dist(u,y)-dist(u,mid))-sz_{mid} \times dist(mid,y)-(n-sz_{mid}) \times dist(mid,x))$</p>
+<p>哈哈，非常神奇的我们就可以做了</p>
+<p>时间复杂度 $O(n\log n)$</p>
 
                 
               </div>
@@ -312,7 +443,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/ds/" class="print-no-link">#ds</a>
+        <a href="/tags/ABC/" class="print-no-link">#ABC</a>
       
     </div>
   
@@ -324,8 +455,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>shabby ds</div>
-      <div>http://lnyxqwq.github.io/2023/08/15/shabby ds/</div>
+      <div>ABC G Ex 简要题解</div>
+      <div>http://lnyxqwq.github.io/2023/08/15/ABC G Ex 简要题解/</div>
     </div>
     <div class="license-meta">
       
@@ -369,9 +500,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/15/%E7%AB%9E%E8%B5%9B%E5%9B%BE%E5%85%AD%E6%AD%A5%E8%B5%B0/" title="竞赛图六步走">
+                      <a href="/2023/08/15/BLAST.tv%20Paris%20Major%202023%20%E8%A7%82%E5%90%8E%E6%84%9F/" title="BLAST.tv Paris Major 2023 观后感">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">竞赛图六步走</span>
+                        <span class="hidden-mobile">BLAST.tv Paris Major 2023 观后感</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -379,8 +510,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/15/S2%E9%A2%98%E5%8D%95%EF%BC%9ANOIP%E5%89%8D%E5%BB%BA%E8%AE%AE%E5%81%9A%E7%9A%84%E9%A2%98/" title="S2题单：NOIP前建议做的题">
-                        <span class="hidden-mobile">S2题单：NOIP前建议做的题</span>
+                      <a href="/2023/08/15/hall%20%E5%AE%9A%E7%90%86/" title="hall 定理">
+                        <span class="hidden-mobile">hall 定理</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

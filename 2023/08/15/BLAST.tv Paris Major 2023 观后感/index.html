@@ -16,24 +16,24 @@
   <meta name="author" content="lnyx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="gym103687K. Dynamic Reachability 首先看到这个巨大的时限 $12\operatorname{s}$ ，盲猜一手是 $bitset$ 或者是分块结果两个都有 最直观的想法肯定是直接搜，复杂度是 $O((n+m)q)$ 的，不可以接受，但是这种做法太没有拓展性了，考虑一些有拓展性的做法，发现一般图传递闭包是 $O(\frac{n^3}{\omega})$，但是拓扑图的传">
+    <meta name="description" content="摩尔投票 方法： 大概操作就是记录一个 $major,cnt$ ，顺序遍历数组 $a$，假设遍历到了第 $i$ 个，当 $cnt&#x3D;0$ 时让 $major&#x3D;a_i$ ， 当 $cnt$ 不为 $0$ 时，如果 $a_i&#x3D;major$ 让 $cnt$ 加 $1$ ，否则减 $1$ 这样做的时间复杂度是 $O(n)$ 的，空间复杂度是 $O(1)$ 的。 注意这个是有绝对众数的时候才是对的。 拓展：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shabby ds">
-<meta property="og:url" content="http://lnyxqwq.github.io/2023/08/15/shabby%20ds/index.html">
+<meta property="og:title" content="BLAST.tv Paris Major 2023 观后感">
+<meta property="og:url" content="http://lnyxqwq.github.io/2023/08/15/BLAST.tv%20Paris%20Major%202023%20%E8%A7%82%E5%90%8E%E6%84%9F/index.html">
 <meta property="og:site_name" content="o(*≧▽≦)ツ">
-<meta property="og:description" content="gym103687K. Dynamic Reachability 首先看到这个巨大的时限 $12\operatorname{s}$ ，盲猜一手是 $bitset$ 或者是分块结果两个都有 最直观的想法肯定是直接搜，复杂度是 $O((n+m)q)$ 的，不可以接受，但是这种做法太没有拓展性了，考虑一些有拓展性的做法，发现一般图传递闭包是 $O(\frac{n^3}{\omega})$，但是拓扑图的传">
+<meta property="og:description" content="摩尔投票 方法： 大概操作就是记录一个 $major,cnt$ ，顺序遍历数组 $a$，假设遍历到了第 $i$ 个，当 $cnt&#x3D;0$ 时让 $major&#x3D;a_i$ ， 当 $cnt$ 不为 $0$ 时，如果 $a_i&#x3D;major$ 让 $cnt$ 加 $1$ ，否则减 $1$ 这样做的时间复杂度是 $O(n)$ 的，空间复杂度是 $O(1)$ 的。 注意这个是有绝对众数的时候才是对的。 拓展：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.emojiall.com/img/platform/qq/074@2x.gif">
-<meta property="article:published_time" content="2023-08-15T11:56:40.000Z">
-<meta property="article:modified_time" content="2023-08-15T11:56:54.261Z">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/rn4z9c7r.png">
+<meta property="article:published_time" content="2023-08-15T12:14:04.000Z">
+<meta property="article:modified_time" content="2023-08-15T12:14:42.657Z">
 <meta property="article:author" content="lnyx">
-<meta property="article:tag" content="ds">
+<meta property="article:tag" content="摩尔投票，知识">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.emojiall.com/img/platform/qq/074@2x.gif">
+<meta name="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/rn4z9c7r.png">
   
   
   
-  <title>shabby ds - o(*≧▽≦)ツ</title>
+  <title>BLAST.tv Paris Major 2023 观后感 - o(*≧▽≦)ツ</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="shabby ds"></span>
+            <span id="subtitle" data-typed-text="BLAST.tv Paris Major 2023 观后感"></span>
           
         </div>
 
@@ -224,7 +224,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-15 19:56" pubdate>
+        <time datetime="2023-08-15 20:14" pubdate>
           2023年8月15日 晚上
         </time>
       </span>
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          2.1k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          10 分钟
+          18 分钟
         
       </span>
     
@@ -284,22 +284,70 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">shabby ds</h1>
+            <h1 id="seo-header">BLAST.tv Paris Major 2023 观后感</h1>
             
             
               <div class="markdown-body">
                 
-                <h4 id="gym103687K-Dynamic-Reachability"><a target="_blank" rel="noopener" href="https://codeforces.com/gym/103687/problem/K">gym103687K. Dynamic Reachability</a></h4>
-<p>首先看到这个巨大的时限 $12\operatorname{s}$ ，盲猜一手是 $bitset$ 或者是分块<s>结果两个都有</s></p>
-<p>最直观的想法肯定是直接搜，复杂度是 $O((n+m)q)$ 的，不可以接受，但是这种做法太没有拓展性了，考虑一些有拓展性的做法，发现一般图传递闭包是 $O(\frac{n^3}{\omega})$，但是拓扑图的传递闭包是 $O(\frac{nm}{\omega})$ ，考虑把他缩点成一个拓扑图然后拓扑排序，时间复杂度 $O((n+m+\frac{nm}{\omega})q)$ <s>更加</s>不能接受了，但是这个看起来就比上面那个高级很多，因为我们能求出整张图上每个点能到达的所有点，这个是上面做不到的，而且每次修改只会改一条边，所以图不会产生太大的变化</p>
-<p>这时候就感觉应该是分块了，我们把每 $B$ 个询问放到一块做，设这 $B$ 个操作里面涉及到的点为关键点，涉及到的边为关键边，发现我们就是问关键点的连通性，我们对于每个点维护一个关键点的 $bitset$ ，表示这个点能到达的关键点，通过黑色的非关键边跑拓扑排序求出，这样就在不考虑关键边的情况下建出了不含关键边的关键点新图，因为我 $bitset$ 只维护关键点，所以复杂度就是 $O(\frac{mB}{\omega}q)$</p>
-<p>先不管关键边，思考怎么查询，直观想法是继续拓扑排序，但是这样没有拓展性，因为我不可能建出新图后递归上面那坨答辩算法，因为万一是我建出来的就是拓扑图就寄了不能递归了，所以考虑一开始就提出的 $bfs$ ，发现现在的图很小了，只有 $B$ 个点 $B^2$ 条边，直接跑复杂度是 $O((B+B^2)q)$ 的。</p>
-<p>现在来分析一下复杂度，将上面的答辩加起来是 $O(\frac{q}{B}(n+m+\frac{mB}{\omega})+(B+B^2)q)$ ，化简一下是 $O(\frac{mq}{\omega}+\frac{q}{B}(n+m)+B^2q)$，根号平衡一下 $B$ 发现大概是 $(n+m)^{\frac{1}{3}}$ ，然后就结束了……吗？</p>
-<p>算一下复杂度大概是 $6e8$ 左右，然后我们就开心的写，然后就 $T$ 了 <img src="https://www.emojiall.com/img/platform/qq/074@2x.gif" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>发现有一个神奇的东西，用 $bitset$ 优化 $bfs$ 可以做到 $O(n+\frac{n^2}{\omega})$ ，现在复杂度就是 $O(\frac{mq}{\omega}+\frac{q}{B}(n+m)+\frac{B^2}{\omega}q)$ 了，复杂度大概是 $2.5e8$ ，我也不知道，反正就是能过了</p>
-<h4 id="gym105065B-Call-Me-Call-Me"><a target="_blank" rel="noopener" href="https://codeforces.com/gym/104065/problem/B">gym105065B. Call Me Call Me</a></h4>
-<p>15s 时限我跑了14476 ms。</p>
-<p>lxl 讲的</p>
+                <h2 id="摩尔投票">摩尔投票</h2>
+<p>方法：</p>
+<p>大概操作就是记录一个 $major,cnt$ ，顺序遍历数组 $a$，假设遍历到了第 $i$ 个，当 $cnt=0$ 时让 $major=a_i$ ， 当 $cnt$ 不为 $0$ 时，如果 $a_i=major$ 让 $cnt$ 加 $1$ ，否则减 $1$</p>
+<p>这样做的时间复杂度是 $O(n)$ 的，空间复杂度是 $O(1)$ 的。</p>
+<p>注意这个是有绝对众数的时候才是对的。</p>
+<p>拓展：</p>
+<p>现在你要求出现次数超过 $\frac{n}{k}$ 的，显然数的个数是小于 $k$ 的，不然 $n$ 个肯定不够</p>
+<p>其实做法和上面差不多，现在要开两个数组 $major_i,cnt_i$</p>
+<p>操作：</p>
+<p>首先如果 $x$ 本身是候选者的话，则对其出现次数加一</p>
+<p>如果不是的话，如果有 $cnt=0$ 的位置那么就让 $x$ 成为候选者，出现次数变为 $1$，否则让所有候选者出现次数减 $1$</p>
+<p>注意这个不一定所有都是对的，但是正确的答案一定包括</p>
+<p>这个万一就感觉有点抽象了，所以还是证明一下吧</p>
+<p>考虑反证法，假设 $x$ 出现了 $y&gt;\frac{n}{k}$ 次，但是他不在答案里面</p>
+<ol>
+<li>他就没有进入过 $major$ 数组：那么他肯定让所有候选者减去了 $y$ 次，但是由 $y&gt;\frac{n}{k}$ 知 $y\times k &gt; n$ 不符合题意</li>
+<li>他进入过然后被干掉了：同理，他被干掉了说明肯定所有候选者都减去了 $y$ 次，同上，还是寄</li>
+</ol>
+<p>那么摩尔投票有什么用呢？</p>
+<h3 id="摩尔投票具有结合律，可以用-ds-乱搞">摩尔投票具有结合律，可以用 $ds$ 乱搞</h3>
+<p>这玩意就和线性基很像，就直接把一个插进另一个就行了</p>
+<h4 id="CF643G-Choosing-Ads"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF643G">CF643G Choosing Ads</a></h4>
+<p>就是板子</p>
+<p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/643/submission/205378557">code</a></p>
+<h3 id="更加神奇的东西">更加神奇的东西</h3>
+<p><s>其实感觉和摩尔投票没啥关系了</s></p>
+<p>假设我现在猜一手区间众数为 $x$ ，现在就可以把等于 $x$ 的设为 $1$ ，否则设为 $-1$ ，这样 $\text{chk}$ 一个区间是否众数是 $x$ 就可以 $O(1)$ 了</p>
+<p>因为是绝对众数，所以我枚举一遍我猜的众数就可以求出所有区间的众数了，<s>但是这是 $O(n^2)$ 的</s></p>
+<p>但是还有性质 😍😍😍</p>
+<ol>
+<li>当区间 $[l,r]$ 有绝对众数 $x$ 时，区间 $[l,k],[k+1,r],k\in[l,r)$ 肯定有一个的有绝对众数并且他是 $x$ <s>废话</s></li>
+<li>区间 $[l,l],[l,l+1],[l,l+2],…,[l,r]$ 的本质不同绝对众数个数只有 $log_2$ 个，原因是我要是想成为绝对众数要大于区间一半，就比如假设现在序列长度为 $n$ ，你至少要加 $n+1$ 个数才能成为新的绝对众数</li>
+</ol>
+<p>将上面两个结合起来后，就有了一个非常 😎 的结论，就是跨过区间 $[l,r]$ 中点 $mid$ 的所有区间的绝对众数个数是 $\log$ 级别的，具体来说，根据性质 $1$，就是区间 $[l,l],[l,l+1],…,[l,mid]$ 和 $[mid,mid],[mid,mid+1],…,[mid,r]$ 的绝对众数集合一定是包含所有上述区间的绝对众数的，又根据性质 $2$ ，可以知道只有 $\log$ 个</p>
+<h4 id="ARC159F-Good-Division"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_arc159_f">ARC159F Good Division</a></h4>
+<p>题意：定义可以每次删去一对相邻不同的数把序列删空，求将数组 $A$ 划分成若干个合法的子串的方案数</p>
+<p>首先转化一下题意，一个序列是好的当且仅当他没有绝对众数，这个显然是正确的，因为题目里面给的操作就是一个摩尔投票的过程。</p>
+<p>然后我们就有 $O(n^2)$ 的做法了，🐍 $f_i$ 表示前 $i$ 个数的方案数，转移就枚举最后一个序列长度就行了，好棒！但是过不了😔</p>
+<p>考虑利用上面那个东西优化，搞一个类似 $cdq$ 优化 $dp$ 的东西</p>
+<p>假设现在求的区间是 $[l,r]$ ，先递归 $[l,mid]$ 算出左边的值，考虑左边对右边的贡献，根据上面性质，跨过中点的区间只有 $\log$ 个众数，发现一个区间只有一个绝对众数，所以可以先让所有 $[mid+1,r]$ 的 $f$ 加上 $[l,mid]$ 的 $f$， 然后直接枚举众数减去不合法的，精细实现一下应该可以做到 $O(n\log^2 n)$</p>
+<p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/arc159/submissions/41301372">code</a> (上面<s>肯定 🤡</s> 可能讲的不是很清楚)</p>
+<p>但是我还想讲一个好玩的东西，虽然好像跟摩尔投票无关，但是跟上面的那个玩意有关，有了这个就很好做到 $O(n\log^2n)$ 了</p>
+<blockquote>
+<p>给定长度为 $n$ 一个 $0,1$ 序列 $A$，求 $1$ 个数比 $0$ 个数多的区间个数 $n \le 反正单 \log 过不去$</p>
+</blockquote>
+<p>首先这个用 $bit$ 很容易做到 $O(n\log n)$ ，但是还不够优秀 😅</p>
+<p>首先肯定的转化是把 $0$ 改为 $-1$ ，做一个前缀和，现在就是要对于每个 $i$ 求 $sum_i &gt;sum_{j-1}$ 的 $j$ 的个数了</p>
+<p>现在有一个很 🤩 的做法，我们把 $1,-1$ 看为折线</p>
+<p>比如 $101001$ 这个就长成这样</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/rn4z9c7r.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>发现每次只会移动一位，也就是说我每移动一次就只有一个纵坐标加入或减去</p>
+<p>算了上面的你一定没有听懂 🧐</p>
+<p>其实就是你对 $[-n,n]$ 的每个位置开一个桶，统计 $[1,i]$ 有几个 $sum_i$ 是当前纵坐标，然后你再记一个 $pre$ 表示坐标有多少 $j$ 满足 $j&lt;i,sum_j&lt;sum_i$，走上来就把桶贡献加进 $pre$，走下去就把桶从 $pre$ 中删掉</p>
+<p>应用：</p>
+<h4 id="Coming（coming）"><a target="_blank" rel="noopener" href="http://c.gdfzoj.com/contest/15/problem/531">Coming（coming）</a></h4>
+<p><s>这是 [生成函数] 的题看不了</s></p>
+<p><s>题意也不能说</s></p>
+<p>算了谁能看谁看吧</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lnyx/p/17391286.html">题解</a></p>
 
                 
               </div>
@@ -312,7 +360,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/ds/" class="print-no-link">#ds</a>
+        <a href="/tags/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%EF%BC%8C%E7%9F%A5%E8%AF%86/" class="print-no-link">#摩尔投票，知识</a>
       
     </div>
   
@@ -324,8 +372,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>shabby ds</div>
-      <div>http://lnyxqwq.github.io/2023/08/15/shabby ds/</div>
+      <div>BLAST.tv Paris Major 2023 观后感</div>
+      <div>http://lnyxqwq.github.io/2023/08/15/BLAST.tv Paris Major 2023 观后感/</div>
     </div>
     <div class="license-meta">
       
@@ -369,9 +417,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/15/%E7%AB%9E%E8%B5%9B%E5%9B%BE%E5%85%AD%E6%AD%A5%E8%B5%B0/" title="竞赛图六步走">
+                      <a href="/2023/08/15/%E5%82%BB%E9%80%BC%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="傻逼三角函数学习笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">竞赛图六步走</span>
+                        <span class="hidden-mobile">傻逼三角函数学习笔记</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -379,8 +427,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/15/S2%E9%A2%98%E5%8D%95%EF%BC%9ANOIP%E5%89%8D%E5%BB%BA%E8%AE%AE%E5%81%9A%E7%9A%84%E9%A2%98/" title="S2题单：NOIP前建议做的题">
-                        <span class="hidden-mobile">S2题单：NOIP前建议做的题</span>
+                      <a href="/2023/08/15/ABC%20G%20Ex%20%E7%AE%80%E8%A6%81%E9%A2%98%E8%A7%A3/" title="ABC G Ex 简要题解">
+                        <span class="hidden-mobile">ABC G Ex 简要题解</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

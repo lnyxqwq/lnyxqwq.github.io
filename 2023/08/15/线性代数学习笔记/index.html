@@ -1,0 +1,1222 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/wife.png">
+  <link rel="icon" href="/img/wife.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="lnyx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="注：除了上面那张图都是贺的 $\text{3Blue1Brown}$ 的 向量 向量可以是任何东西，只要保证两个向量相加以及数字与向量相乘是有意义的即可 向量加法： $\vec{v}+\vec{w}$ 如图：   为什么是这样定义的？ 可以将向量看成一种特定的运动，即在空间中按照向量方向走他的长度的距离，这样定义加法时走 $\vec{v}$ 和走 $\vec{w}$ 是等同于走 $\vec{v}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性代数学习笔记">
+<meta property="og:url" content="http://lnyxqwq.github.io/2023/08/15/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="o(*≧▽≦)ツ">
+<meta property="og:description" content="注：除了上面那张图都是贺的 $\text{3Blue1Brown}$ 的 向量 向量可以是任何东西，只要保证两个向量相加以及数字与向量相乘是有意义的即可 向量加法： $\vec{v}+\vec{w}$ 如图：   为什么是这样定义的？ 可以将向量看成一种特定的运动，即在空间中按照向量方向走他的长度的距离，这样定义加法时走 $\vec{v}$ 和走 $\vec{w}$ 是等同于走 $\vec{v}">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/yr9gjmhl.png">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/il3p69604k.png">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/rtqfskxy12.png">
+<meta property="og:image" content="http://xn--wcs.tk/q">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/llhflsj7pf.png">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/wu2te7lxgf.png">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/39vmpndj82.png">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/hn9xgw7oi4.png">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/hu44rw1j3y.png">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/uz1c0vcbw7.png">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/1vz6d1yo59.png">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/x3pzrtibtg.png">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/vxgwtp37v4.png">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/z51fw73cce.png">
+<meta property="og:image" content="http://xn--wcs.tk/3">
+<meta property="og:image" content="http://xn--wcs.tk/3">
+<meta property="og:image" content="http://xn--wcs.tk/3">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/wvn6qyug0y.png">
+<meta property="og:image" content="http://xn--wcs.tk/r">
+<meta property="og:image" content="http://xn--wcs.tk/r">
+<meta property="og:image" content="http://xn--wcs.tk/r">
+<meta property="og:image" content="https://sjzezoj.com/image_hosting/kntj0is40s.png">
+<meta property="article:published_time" content="2023-08-15T12:57:32.000Z">
+<meta property="article:modified_time" content="2023-08-15T12:57:49.685Z">
+<meta property="article:author" content="lnyx">
+<meta property="article:tag" content="线性代数">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/yr9gjmhl.png">
+  
+  
+  
+  <title>线性代数学习笔记 - o(*≧▽≦)ツ</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lnyxqwq.github.io","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>lnyx</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/002.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="线性代数学习笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-15 20:57" pubdate>
+          2023年8月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          89 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">线性代数学习笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><img src="https://cdn.luogu.com.cn/upload/image_hosting/yr9gjmhl.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>注：除了上面那张图都是贺的 <a target="_blank" rel="noopener" href="https://space.bilibili.com/88461692">$\text{3Blue1Brown}$</a> 的</p>
+<h3 id="向量">向量</h3>
+<p>向量可以是任何东西，只要保证两个向量相加以及数字与向量相乘是有意义的即可</p>
+<p>向量加法：</p>
+<p>$\vec{v}+\vec{w}$ 如图：</p>
+<p><img src="https://sjzezoj.com/image_hosting/il3p69604k.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://sjzezoj.com/image_hosting/rtqfskxy12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>为什么是这样定义的？</p>
+<p>可以将向量看成一种特定的运动，即在空间中按照向量方向走他的长度的距离，这样定义加法时走 $\vec{v}$ 和走 $\vec{w}$ 是等同于走 $\vec{v}+\vec{w}$ 的</p>
+<p>考虑矩阵<br>
+$$<br>
+\begin{bmatrix}<br>
+x \<br>
+y<br>
+\end{bmatrix}<br>
++<br>
+\begin{bmatrix}<br>
+a \<br>
+b<br>
+\end{bmatrix}<br>
+$$<br>
+等于先沿纵坐标方向走 $x$ 距离，然后沿横坐标方向走 $y$ 距离，沿纵坐标方向走 $a$ 距离，然后沿横坐标方向走 $b$ 距离，所以上面两个矩阵加完就是<br>
+$$<br>
+\begin{bmatrix}<br>
+x+a \<br>
+y+b<br>
+\end{bmatrix}<br>
+$$<br>
+向量数乘：</p>
+<p>$a\vec{x}$ 等于把向量 $x$ 拉长 $a$ 倍</p>
+<h1>这种过程被称为缩放 $a$ 被称为标量，在线性代数中数字的主要作用就是缩放向量<br>
+$$<br>
+a<br>
+\begin{bmatrix}<br>
+x \<br>
+y<br>
+\end{bmatrix}</h1>
+<h1>\begin{bmatrix}<br>
+a\times x \<br>
+b\times y<br>
+\end{bmatrix}<br>
+$$<br>
+矩阵<br>
+$$<br>
+\begin{bmatrix}<br>
+x \<br>
+y<br>
+\end{bmatrix}<br>
+$$<br>
+可以表示为 $x\times \hat{i}+y \times \hat{j}$<br>
+$$<br>
+\hat{i}</h1>
+<p>\begin{bmatrix}<br>
+1 \<br>
+0<br>
+\end{bmatrix}<br>
+,\hat{j}=<br>
+\begin{bmatrix}<br>
+0 \<br>
+1<br>
+\end{bmatrix}<br>
+$$<br>
+$\hat{i}$ 与 $\hat{j}$ 是 $xy$ 坐标系的基向量</p>
+<p>当然基向量也可以不选这俩，只要不共线就行了</p>
+<p>当用数字描述向量时，都依赖于正在使用的基</p>
+<p>$a\vec{v}+b\vec{w}$ 被称为两个向量的<strong>线性组合</strong></p>
+<p>为啥叫线性组合？</p>
+<p>将一个标量固定，发现这两个向量加起来后产生的向量的终点在一条直线上（$3B1B$ 这样说的</p>
+<p>将两个标量同时改变，如果不共线则可以组合出所有二维平面中的向量，但是共线时时一条直线<img src="http://%E5%9B%BE.tk/q" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>所有可以表示为给定向量线性组合的向量构成的集合被称为给定向量张成的空间($\text{span}$)</p>
+<p><strong>向量与点</strong>：通常用向量的终点代表该向量</p>
+<p>三维空间中的张成空间</p>
+<p>两个三维向量张成的空间是一个二维平面</p>
+<p><img src="https://sjzezoj.com/image_hosting/llhflsj7pf.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>那当加上第三个向量呢？</p>
+<p>线性组合的定义是很像的 $a\vec{v}+b\vec{w}+c\vec{u}$</p>
+<p>如果第三个向量落在了前两个向量的平面上，那就还是在这个平面上否则能得到所有三维向量</p>
+<p>更高维的我不会了，可以让 [$sls$] 帮你想一下</p>
+<p>要是有多个向量，并且可以在不改变张成空间大小的情况下移除一些向量，则称这些向量是<strong>线性相关</strong>的</p>
+<p>另一种表述是其中一个向量可以被表示为其他向量的线性组合</p>
+<p>否则就是线性无关的了</p>
+<p><strong>向量空间的一组基是张成该空间的一个线性无关向量集</strong></p>
+<h3 id="矩阵与线性变换">矩阵与线性变换</h3>
+<p>变换：就是函数的一个其他叫法，输入一些东西，输出所对应的东西，在线性代数中考虑的是向量输入输出</p>
+<p>为什么叫变换不叫函数？就是暗示可以通过特定方式来可视化变换关系</p>
+<p>线性代数限制在了一种特殊的变换上，<strong>线性变换</strong></p>
+<p>线性变换性质：</p>
+<ol>
+<li>直线变换后仍为直线</li>
+<li>原点必须保持固定</li>
+</ol>
+<p>可以把线性变换看作“保持网格线平行且等距分别“的变换</p>
+<p>你只要知道 $\hat{i}$ 和 $\hat{j}$ 变换后的位置就能求出所有向量了，因为这俩是 $2d$ 平面一组基</p>
+<p>也就是一个二维线性变换可以仅由 $4$ 个数字确定，即变换后 $\hat{i}$ 的向量和 $\hat{j}$ 的向量</p>
+<h1>将他们写成矩阵<br>
+$$<br>
+\begin{bmatrix}<br>
+a&amp;b\<br>
+c&amp;d<br>
+\end{bmatrix}<br>
+\<br>
+其中<br>
+\begin{bmatrix}<br>
+a\<br>
+c<br>
+\end{bmatrix}<br>
+是变换后的 \hat{i}<br>
+，<br>
+\begin{bmatrix}<br>
+b\<br>
+d<br>
+\end{bmatrix}<br>
+是变换后的 \hat{j}<br>
+$$<br>
+线性变换对矩阵的作用就直接按照矩阵乘法乘起来就好了<br>
+$$<br>
+所以对于向量<br>
+\begin{bmatrix}<br>
+x\<br>
+y<br>
+\end{bmatrix}<br>
+的变换就是<br>
+\<br>
+\begin{bmatrix}<br>
+a&amp;b\<br>
+c&amp;d<br>
+\end{bmatrix}<br>
+\begin{bmatrix}<br>
+x\<br>
+y<br>
+\end{bmatrix}</h1>
+<h1>x<br>
+\begin{bmatrix}<br>
+a\<br>
+c<br>
+\end{bmatrix}<br>
++<br>
+y<br>
+\begin{bmatrix}<br>
+b\<br>
+d<br>
+\end{bmatrix}</h1>
+<p>\begin{bmatrix}<br>
+ax+by\<br>
+cx+dy<br>
+\end{bmatrix}<br>
+$$</p>
+<h3 id="矩阵乘法与线性变换复合">矩阵乘法与线性变换复合</h3>
+<p>假设我要进行两个线性变换，这玩意叫“复合变换”</p>
+<p>假设现在做两个线性变换<br>
+$$<br>
+\begin{bmatrix}<br>
+a&amp;b \<br>
+c&amp;d<br>
+\end{bmatrix}<br>
+\begin{bmatrix}<br>
+e&amp;f\<br>
+g&amp;h<br>
+\end{bmatrix}<br>
+\begin{bmatrix}<br>
+x\<br>
+y<br>
+\end{bmatrix}<br>
+$$</p>
+<p>$$<br>
+你是先将<br>
+\begin{bmatrix}<br>
+x\<br>
+y<br>
+\end{bmatrix}<br>
+乘上<br>
+\begin{bmatrix}<br>
+e&amp;f\<br>
+g&amp;h<br>
+\end{bmatrix}<br>
+然后再乘上<br>
+\begin{bmatrix}<br>
+a&amp;b \<br>
+c&amp;d<br>
+\end{bmatrix}<br>
+$$</p>
+<p>这是因为函数 $f(g(x))$ 这类的也是先看里面，道理相似</p>
+<p>为什么矩乘没有交换律：</p>
+<p>代数就不证了，<s>懒得写</s></p>
+<p>可以画个图看看嘛<s>反正不是我画的</s>：</p>
+<p>先<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%89%AA%E5%88%87%E5%8F%98%E6%8D%A2">剪切</a>后逆时针 $90^{\circ}$</p>
+<p><img src="https://sjzezoj.com/image_hosting/wu2te7lxgf.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://sjzezoj.com/image_hosting/39vmpndj82.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>先逆时针旋转 $90^{\circ}$ 后剪切</p>
+<p><img src="https://sjzezoj.com/image_hosting/hn9xgw7oi4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://sjzezoj.com/image_hosting/hu44rw1j3y.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>寄！</p>
+<p>为什么矩阵乘法有交换律：</p>
+<p>你考虑</p>
+<p>$ABC$ 和 $(AB)C$ ，从右往左读没有任何区别</p>
+<p>所以就证完了（雾</p>
+<h3 id="行列式">行列式</h3>
+<p>在进行线性变换时改变面积的比例被称为这个线性变换的行列式</p>
+<p>比如：</p>
+<p><img src="https://sjzezoj.com/image_hosting/uz1c0vcbw7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>变换到</p>
+<p><img src="https://sjzezoj.com/image_hosting/1vz6d1yo59.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>这个线性变换的行列式就是 $2$</p>
+<p>如果这个线性变换将原来的空间缩小了，则行列式为 $0$ ，比如将一个二维平面压成一条直线</p>
+<p>如果空间定向发生了改变，则行列式为负</p>
+<p>什么是定向？</p>
+<p>就比如二维平面，可以将二维平面看成一张纸，将纸的正反面改变，定向就发生了改变，在二维平面中，一开始 $\hat{j}$ 在 $\hat{i}$ 的逆时针方向，如果在进行变换后到了 $\hat{i}$ 的顺时针方向，就等于定向发生改变</p>
+<p><img src="https://sjzezoj.com/image_hosting/x3pzrtibtg.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://sjzezoj.com/image_hosting/vxgwtp37v4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>这个线性变换的行列式就是 $-3$ （图好像寄了）</p>
+<p>为什么空间定向变化后行列式为负？</p>
+<p>考虑随着 $\hat{i}$ 和 $\hat{j}$ 靠近时面积的变化比例，他会慢慢接近于 $0$ ，当 $\hat{i}$ 与 $\hat{j}$ 重合时行列式为 $0$ ，所以继续走下去行列式为负数就变得合理了</p>
+<p>但是上面所说的都是在二维空间下，那么三维呢</p>
+<p>也是缩放的比例，不过变成了缩放体积的比例</p>
+<p>那么三维空间中行列式为负怎么判断呀</p>
+<p>有一个右手定则</p>
+<p><img src="https://sjzezoj.com/image_hosting/z51fw73cce.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>如果 $\hat{i},\hat{j},\hat{k}$ 能和手这样匹配上行列式就为正，否则为负</p>
+<p>怎么计算行列式？<img src="http://%E5%9B%BE.tk/3" srcset="/img/loading.gif" lazyload alt=""><img src="http://%E5%9B%BE.tk/3" srcset="/img/loading.gif" lazyload alt=""><img src="http://%E5%9B%BE.tk/3" srcset="/img/loading.gif" lazyload alt=""><br>
+$$<br>
+对于一个 2 \times 2 的矩阵<br>
+\begin{bmatrix}<br>
+a&amp;b \<br>
+c&amp;d<br>
+\end{bmatrix}<br>
+他的行列式<br>
+\det<br>
+\begin{pmatrix}<br>
+\begin{bmatrix}<br>
+a&amp;b \<br>
+c&amp;d<br>
+\end{bmatrix}<br>
+\end{pmatrix}<br>
+=ad-bc<br>
+$$<br>
+大概理解一下的话就是先假设 $b,c$ 都为 $0$ ， $a,d$ 就是表示 $\hat{i},\hat{j}$ 的缩放面积，当 $b,c$ 有一项不为 $0$ 时这是一个平行四边形，面积还是 $ad$ ，但是要是两个都不为 $0$ ， $bc$ 项会告诉你平行四边形在对角方向上变化了多少</p>
+<p>具体的证明就是这个</p>
+<p><img src="https://sjzezoj.com/image_hosting/wvn6qyug0y.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1>那么三阶行列式呢<br>
+$$<br>
+\det<br>
+\begin{pmatrix}<br>
+\begin{bmatrix}<br>
+a&amp;b&amp;c \<br>
+d&amp;e&amp;f \<br>
+g&amp;h&amp;i<br>
+\end{bmatrix}<br>
+\end{pmatrix}</h1>
+<p>a<br>
+\det<br>
+\begin{pmatrix}<br>
+\begin{bmatrix}<br>
+e&amp;f \<br>
+h&amp;i<br>
+\end{bmatrix}<br>
+\end{pmatrix}<br>
+-b<br>
+\det<br>
+\begin{pmatrix}<br>
+\begin{bmatrix}<br>
+d&amp;f \<br>
+g&amp;i<br>
+\end{bmatrix}<br>
+\end{pmatrix}<br>
++c<br>
+\det<br>
+\begin{pmatrix}<br>
+\begin{bmatrix}<br>
+d&amp;e \<br>
+g&amp;h<br>
+\end{bmatrix}<br>
+\end{pmatrix}<br>
+$$<br>
+<s>但是这些在 $OI$ 中好像都没有用</s></p>
+<p>所以 $n$ 阶行列式怎么求值呢？<img src="http://%E5%9B%BE.tk/r" srcset="/img/loading.gif" lazyload alt=""><img src="http://%E5%9B%BE.tk/r" srcset="/img/loading.gif" lazyload alt=""><img src="http://%E5%9B%BE.tk/r" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>设 $A$ 为一个 $n$ 维空间中的变换</p>
+<p>$\det(A)=\sum\limits_p (-1)^{\tau(p)}\prod\limits_{i=1}^n A_{i,p_i}$ 其中 $p$ 是一个排列，$\tau(p)$ 是 $p$ 的逆序对数，这样直接算是 $O(n!\ n\log n)$</p>
+<p>一些定义：</p>
+<ul>
+<li>当 $2 \not\mid \tau(p)$ 为奇排列，否则为偶排列</li>
+<li>将一个排列交换两个元素位置被称为对换，发生一次对换后排列奇偶性发生改变（画一下就明白了）</li>
+</ul>
+<p>所以直接做直接寄，既然不能直接做，那么就肯定要找一些性质了</p>
+<ol>
+<li>
+<p>交换 $A$ 的两行/列，行列式取反</p>
+<p>证明：我们不考虑换$A$ ，考虑换 $p$ 的两个位置，这玩意等于就是在算 $\tau(p)$ 的时候不交换，但是在弄 $A_{i,p_i}$ 时交换，这显然是正确的，因为一次对换后奇偶性发生改变，所以时相反数</p>
+</li>
+<li>
+<h1>$A$ 的行/列所有元素等比例变化，则行列式也等比例变化（这是显然的）<br>
+$$<br>
+\det<br>
+\begin{pmatrix}<br>
+\begin{bmatrix}<br>
+a_{1,1}&amp;a_{1,2}&amp;\cdots&amp;a_{1,n} \<br>
+a_{2,1}&amp;a_{2,2}&amp;\cdots&amp;a_{2,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+k\times a_{x,1}&amp;k\times a_{x,2}&amp;\cdots&amp;k\times a_{x,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{n-1,1}&amp;a_{n-1,2}&amp;\cdots&amp;a_{n-1,n} \<br>
+a_{n,1}&amp;a_{n,2}&amp;\cdots&amp;a_{n,n} \<br>
+\end{bmatrix}<br>
+\end{pmatrix}</h1>
+<p>k\times<br>
+\det<br>
+\begin{pmatrix}<br>
+\begin{bmatrix}<br>
+a_{1,1}&amp;a_{1,2}&amp;\cdots&amp;a_{1,n} \<br>
+a_{2,1}&amp;a_{2,2}&amp;\cdots&amp;a_{2,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{x,1}&amp;a_{x,2}&amp;\cdots&amp;a_{x,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{n-1,1}&amp;a_{n-1,2}&amp;\cdots&amp;a_{n-1,n} \<br>
+a_{n,1}&amp;a_{n,2}&amp;\cdots&amp;a_{n,n} \<br>
+\end{bmatrix}<br>
+\end{pmatrix}<br>
+$$</p>
+</li>
+<li>
+<h1>如果矩阵 $A$ 中有一行/列，是对应 $2$ 个矩阵 $B,C$ 中分别的 $2$ 相同位置的行/列所有元素之和。那么有 $\det(A)=\det(B)+\det©$ （也是显然的）<br>
+$$<br>
+\det<br>
+\begin{pmatrix}<br>
+\begin{bmatrix}<br>
+a_{1,1}&amp;a_{1,2}&amp;\cdots&amp;a_{1,n} \<br>
+a_{2,1}&amp;a_{2,2}&amp;\cdots&amp;a_{2,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+b_{x,1}+c_{x,1}&amp;b_{x,2}+c_{x,2}&amp;\cdots&amp;b_{x,n}+c_{x,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{n-1,1}&amp;a_{n-1,2}&amp;\cdots&amp;a_{n-1,n} \<br>
+a_{n,1}&amp;a_{n,2}&amp;\cdots&amp;a_{n,n} \<br>
+\end{bmatrix}<br>
+\end{pmatrix}</h1>
+<p>\det<br>
+\begin{pmatrix}<br>
+\begin{bmatrix}<br>
+a_{1,1}&amp;a_{1,2}&amp;\cdots&amp;a_{1,n} \<br>
+a_{2,1}&amp;a_{2,2}&amp;\cdots&amp;a_{2,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+b_{x,1}&amp;b_{x,2}&amp;\cdots&amp;b_{x,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{n-1,1}&amp;a_{n-1,2}&amp;\cdots&amp;a_{n-1,n} \<br>
+a_{n,1}&amp;a_{n,2}&amp;\cdots&amp;a_{n,n} \<br>
+\end{bmatrix}<br>
+\end{pmatrix}<br>
++<br>
+\det<br>
+\begin{pmatrix}<br>
+\begin{bmatrix}<br>
+a_{1,1}&amp;a_{1,2}&amp;\cdots&amp;a_{1,n} \<br>
+a_{2,1}&amp;a_{2,2}&amp;\cdots&amp;a_{2,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+c_{x,1}&amp;c_{x,2}&amp;\cdots&amp;c_{x,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{n-1,1}&amp;a_{n-1,2}&amp;\cdots&amp;a_{n-1,n} \<br>
+a_{n,1}&amp;a_{n,2}&amp;\cdots&amp;a_{n,n} \<br>
+\end{bmatrix}<br>
+\end{pmatrix}<br>
+$$</p>
+</li>
+<li>
+<p>如果 $A$ 存在两行/列成比例则 $\det(A)=0$<br>
+$$<br>
+\det<br>
+\begin{pmatrix}<br>
+\begin{bmatrix}<br>
+a_{1,1}&amp;a_{1,2}&amp;\cdots&amp;a_{1,n} \<br>
+a_{2,1}&amp;a_{2,2}&amp;\cdots&amp;a_{2,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{x,1}&amp;a_{x,2}&amp;\cdots&amp;a_{x,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+k\times a_{x,1}&amp;k\times a_{x,2}&amp;\cdots&amp;k\times a_{x,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{n-1,1}&amp;a_{n-1,2}&amp;\cdots&amp;a_{n-1,n} \<br>
+a_{n,1}&amp;a_{n,2}&amp;\cdots&amp;a_{n,n} \<br>
+\end{bmatrix}<br>
+\end{pmatrix}<br>
+=0<br>
+$$<br>
+证明：对于排列 $p$ 做一个第 $x$ 行和第 $y$ 行的变换，发现行列式互为相反数，所以为 $0$ ，列同理</p>
+</li>
+<li>
+<h1>把 $A$ 的一行/列的值全部乘一个常数加到另一行/列上，行列式值不变<br>
+$$<br>
+\det<br>
+\begin{pmatrix}<br>
+\begin{bmatrix}<br>
+a_{1,1}&amp;a_{1,2}&amp;\cdots&amp;a_{1,n} \<br>
+a_{2,1}&amp;a_{2,2}&amp;\cdots&amp;a_{2,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{x,1}&amp;a_{x,2}&amp;\cdots&amp;a_{x,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{y,1}&amp;a_{y,2}&amp;\cdots&amp;a_{y,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{n-1,1}&amp;a_{n-1,2}&amp;\cdots&amp;a_{n-1,n} \<br>
+a_{n,1}&amp;a_{n,2}&amp;\cdots&amp;a_{n,n} \<br>
+\end{bmatrix}<br>
+\end{pmatrix}</h1>
+<h1>\det<br>
+\begin{pmatrix}<br>
+\begin{bmatrix}<br>
+a_{1,1}&amp;a_{1,2}&amp;\cdots&amp;a_{1,n} \<br>
+a_{2,1}&amp;a_{2,2}&amp;\cdots&amp;a_{2,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{x,1}&amp;a_{x,2}&amp;\cdots&amp;a_{x,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+k\times a_{x,1}+a_{y,1}&amp;k\times a_{x,2}+a_{y,2}&amp;\cdots&amp;k\times a_{x,n}+a_{y,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{n-1,1}&amp;a_{n-1,2}&amp;\cdots&amp;a_{n-1,n} \<br>
+a_{n,1}&amp;a_{n,2}&amp;\cdots&amp;a_{n,n} \<br>
+\end{bmatrix}<br>
+\end{pmatrix}<br>
+$$<br>
+证明：将后面那个矩阵用性质 $3$ 拆开，有<br>
+$$<br>
+\det<br>
+\begin{pmatrix}<br>
+\begin{bmatrix}<br>
+a_{1,1}&amp;a_{1,2}&amp;\cdots&amp;a_{1,n} \<br>
+a_{2,1}&amp;a_{2,2}&amp;\cdots&amp;a_{2,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{x,1}&amp;a_{x,2}&amp;\cdots&amp;a_{x,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{y,1}&amp;a_{y,2}&amp;\cdots&amp;a_{y,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{n-1,1}&amp;a_{n-1,2}&amp;\cdots&amp;a_{n-1,n} \<br>
+a_{n,1}&amp;a_{n,2}&amp;\cdots&amp;a_{n,n} \<br>
+\end{bmatrix}<br>
+\end{pmatrix}</h1>
+<p>\det<br>
+\begin{pmatrix}<br>
+\begin{bmatrix}<br>
+a_{1,1}&amp;a_{1,2}&amp;\cdots&amp;a_{1,n} \<br>
+a_{2,1}&amp;a_{2,2}&amp;\cdots&amp;a_{2,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{x,1}&amp;a_{x,2}&amp;\cdots&amp;a_{x,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{y,1}&amp;a_{y,2}&amp;\cdots&amp;a_{y,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{n-1,1}&amp;a_{n-1,2}&amp;\cdots&amp;a_{n-1,n} \<br>
+a_{n,1}&amp;a_{n,2}&amp;\cdots&amp;a_{n,n} \<br>
+\end{bmatrix}<br>
+\end{pmatrix}<br>
++<br>
+\det<br>
+\begin{pmatrix}<br>
+\begin{bmatrix}<br>
+a_{1,1}&amp;a_{1,2}&amp;\cdots&amp;a_{1,n} \<br>
+a_{2,1}&amp;a_{2,2}&amp;\cdots&amp;a_{2,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{x,1}&amp;a_{x,2}&amp;\cdots&amp;a_{x,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+k\times a_{x,1}&amp;k\times a_{x,2}&amp;\cdots&amp;k\times a_{x,n} \<br>
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots \<br>
+a_{n-1,1}&amp;a_{n-1,2}&amp;\cdots&amp;a_{n-1,n} \<br>
+a_{n,1}&amp;a_{n,2}&amp;\cdots&amp;a_{n,n} \<br>
+\end{bmatrix}<br>
+\end{pmatrix}<br>
+$$<br>
+由性质 $4$ 可得，最后那个矩阵的行列式为 $0$</p>
+</li>
+</ol>
+<p>有了这些性质就可以快速求行列式了 😍😍😍</p>
+<p>发现要是矩阵中要是有一项 $A_{x,y}$ 为 $0$ 的话，对行列式的改变其实时很大的，所有 $p_x=y$ 的都不用算了，快算行列式的方法就是通过上面所说的一些性质变化出来 $0$</p>
+<p>发现上面所有的变换跟高斯消元巨像，所以就直接高斯消元就好了，发现最后一定会消成一个上三角矩阵，所以排列 $p$ 就只有唯一一种取法了，时间复杂度 $O(n^3)$</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P7112">P7112 【模板】行列式求值</a></p>
+<p>这道题很傻逼，模数不一定是质数，所以现在没有除法操作了 😡😡😡 ，那怎么办呢，发现好像可以辗转相减，对于 $a,b$ 要是 $a&gt;b$ 就让 $a$ 减去 $b$ ，否则 $b$ 减去 $a$ ，不难发现这样最后 $b$ 一定会变成 $0$ 的。</p>
+<p>但是这样是 $O(n^3\log n)$ 的， $n=600$ 直接寄，怎么办呢？你发现每次辗转相减两次 $A_{i,i}$ 是会缩小为原来的 $\frac{1}{2}$ 的，所以只会辗转相减 $O(n\log n)$ 次，每次 $O(n)$ ，时间复杂度 $O(n^3+n^2\log n)$</p>
+<p><a href="www.shukuang.com">code</a></p>
+<h3 id="逆矩阵，列空间，零空间">逆矩阵，列空间，零空间</h3>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84?fromModule=lemma_search-box">线性方程组</a>可以通过矩阵来表示</p>
+<h1>例如：<br>
+$$<br>
+2x+5y+3z=-3 \<br>
+4x+0y+8z=0 \<br>
+1x+3y+0z=2<br>
+$$<br>
+可以写成<br>
+$$<br>
+\begin{bmatrix}<br>
+2&amp;5&amp;3 \<br>
+4&amp;0&amp;8 \<br>
+1&amp;3&amp;0<br>
+\end{bmatrix}<br>
+\begin{bmatrix}<br>
+x \<br>
+y \<br>
+z<br>
+\end{bmatrix}</h1>
+<p>\begin{bmatrix}<br>
+3 \<br>
+0 \<br>
+2<br>
+\end{bmatrix}<br>
+$$<br>
+现在我们就等于要寻找一个向量 $\vec{v}$ 变换后与 $\vec{w}$ 重合</p>
+<p>假设现在你有一个方程 $A\vec{v}=\vec{w}$</p>
+<p>当行列式不为 $0$ 时</p>
+<p>可以通过一个逆向操作的变换将 $\vec{w}$ 变成 $\vec{v}$</p>
+<p>这个逆向操作的变换被称为 $A$ 的逆，记为 $A^{-1}$</p>
+<p>$A^{-1}$ 的核心性质在于他乘上 $A$ 等于什么也没有干，这个被称为恒等变换</p>
+<p>当求完逆后,就有</p>
+<p>$A^{-1}A\vec{v}=A^{-1}\vec{w}$</p>
+<p>$\vec{v}=A^{-1}\vec{w}$</p>
+<p>当行列式不为 $0$ 时一定有逆变换</p>
+<p>当行列式为 $0$ 时就没有逆变换了，但是不一定无解，如果答案正好在压成的空间上也是有解的</p>
+<p>拿三维空间举例，显然变换成一个平面比变换成一条直线更容易有解，所以就有了新的定义<strong>秩</strong>，变换后时几位空间变换的秩就是几</p>
+<p>变换后是所有能输出的向量的集合被称为矩阵的<strong>列空间</strong>，也就是 ${A\vec{v}}$ ，为什么叫列空间呢？因为这是把矩阵每一列拉出来当成向量构成的张成空间，所以更精确的秩的定义是列空间的维数</p>
+<p>当秩达到最大值时，意味着秩和列数相同，这个被称为<strong>满秩</strong><br>
+$$<br>
+\begin{bmatrix}<br>
+0 \<br>
+0<br>
+\end{bmatrix}<br>
+一定在	列空间里，因为线性变换原点不变<br>
+$$<br>
+对于一个满秩变换来说，零向量是唯一变换后还在本身的</p>
+<p>遂于一个非满秩变换来说，会有一定向量在变换后变为零向量，变换后落在原点的向量集合被称为矩阵的**“零空间”或“核”**</p>
+<h4 id="矩阵求逆">矩阵求逆</h4>
+<p>因为是学 $OI$ 的，所以还是要学怎么求 😔😔😔</p>
+<p>不过还好很简单！</p>
+<p>已知 $A\times A^{-1}=I$</p>
+<p>那么我们让 $A$ 和一个单位矩阵拼起来，拼成 $[AI]$</p>
+<p>现在让他乘就是 $A^{-1}\times [AI]=[IA^{-1}]$</p>
+<p>所以把 $[AI]$ 的左边消成单位矩阵，用高斯消元即可</p>
+<h3 id="非方阵">非方阵</h3>
+<p>非方阵是什么呢？一个 $n\times m$ 的矩阵可以理解为将 $m$ 维空间中的向量转换为 $n$ 维空间的向量</p>
+<h3 id="点积与对偶性">点积与对偶性</h3>
+<p>点积<br>
+$$<br>
+\begin{bmatrix}<br>
+a_1 \<br>
+a_2 \<br>
+a_3 \<br>
+… \<br>
+b_{n-1} \<br>
+a_n \<br>
+\end{bmatrix}<br>
+\begin{bmatrix}<br>
+b_1 \<br>
+b_2 \<br>
+b_3 \<br>
+… \<br>
+b_{n-1} \<br>
+b_n \<br>
+\end{bmatrix}<br>
+=\sum\limits_{i=1}^{n} a_i\times b_i<br>
+$$<br>
+在二维平面中，这个玩意同样等于 $\vec{v}\vec{w}\cos\alpha$ ，其中 $\alpha$ 是 $\vec{v}$ 和 $\vec{w}$ 的夹角</p>
+<p>为什么点积与顺序无关？</p>
+<p>直观来讲，首先如果向量长度相同，发现对称，这是一样的</p>
+<p><img src="https://sjzezoj.com/image_hosting/kntj0is40s.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>现在将 $\vec{v}$ 缩放为 $k\vec{v}$，就没有对称性了 😔</p>
+<p>但是可以这样想，如果是将 $\vec{w}$ 投影到 $k\vec{v}$ 上，$\vec{w}$ 的投影长度肯定是不变的，所以是 $k\vec{v}\vec{w}$</p>
+<p>要是将 $k\vec{v}$ 投影到 $\vec{w}$ 上，等于是投影长度伸长了 $k$ 倍，所以也是 $k\vec{v}\vec{w}$</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" class="print-no-link">#线性代数</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>线性代数学习笔记</div>
+      <div>http://lnyxqwq.github.io/2023/08/15/线性代数学习笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>lnyx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/15/%E5%B0%8F%E6%B8%85%E6%96%B0%20ds/" title="小清新 ds">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">小清新 ds</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/15/%E7%BD%91%E7%BB%9C%E6%B5%81%E7%9B%B8%E5%85%B3/" title="网络流相关">
+                        <span class="hidden-mobile">网络流相关</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
