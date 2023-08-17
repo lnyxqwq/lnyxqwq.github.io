@@ -236,6 +236,46 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2023/08/18/Boruvka%20%E6%B1%82%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" target="_self">
+          Boruvka 求最小生成树
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/18/Boruvka%20%E6%B1%82%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" target="_self">
+        <div>
+          这玩意好像还是有点用的，主要是思想可以学习一下，而且好像有的题也只能用它。 原理： 一开始将每个点都看成一个集合，每次遍历找到每个集合和其他集合连边的边的最小值，然后枚举这些边，若左右端点不在同一个集合中，将这两个集合合并，重复操作至不能操作，最后就能求出最小生成树。 正确性： 应该是和 kruskal 一样的。 复杂度证明： 因为一条边只有两个端点，所以一条边最多属于两个集合，所以设有 x​x​
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-18 07:37" pubdate>
+              2023-08-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Boruvka/">#Boruvka</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2023/08/15/%E5%B0%8F%E6%B8%85%E6%96%B0%20ds/" target="_self">
           小清新 ds
         </a>
@@ -583,46 +623,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/ABC/">#ABC</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/08/15/hall%20%E5%AE%9A%E7%90%86/" target="_self">
-          hall 定理
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/15/hall%20%E5%AE%9A%E7%90%86/" target="_self">
-        <div>
-          霍尔定理 假设现在有二分图，其左部点集合为 SSS，右部点集合为 TTT，我们钦定 ∣S∣≤∣T∣|S|\le|T|∣S∣≤∣T∣，设 state(S)state(S)state(S) 表示若选出的左部点集合为 SSS，他们连向的右部点的集合为 state(S)state(S)state(S)。霍尔定理就是：若 ∏T∈S[∣T∣≤∣state(T)∣]=1\prod\limits_{T \in
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-15 20:12" pubdate>
-              2023-08-15
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/hall-%E5%AE%9A%E7%90%86/">#hall 定理</a>
             
           </div>
         
