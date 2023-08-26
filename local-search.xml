@@ -4,31 +4,6 @@
   
   
   <entry>
-    <title>纯纯小丑的扫描线</title>
-    <link href="/2023/08/25/%E7%BA%AF%E7%BA%AF%E5%B0%8F%E4%B8%91%E7%9A%84%E6%89%AB%E6%8F%8F%E7%BA%BF/"/>
-    <url>/2023/08/25/%E7%BA%AF%E7%BA%AF%E5%B0%8F%E4%B8%91%E7%9A%84%E6%89%AB%E6%8F%8F%E7%BA%BF/</url>
-    
-    <content type="html"><![CDATA[<p>根本不会这个东西， 🤡 了。</p><p>博主比狗还菜，轻喷 😥</p><h2 id="洛谷-P5490-【模板】扫描线"><a href="https://www.luogu.com.cn/problem/P5490">洛谷 P5490 【模板】扫描线</a></h2><p>板子，教你怎么搞扫描线的。</p><p>但是我感觉这个线段树挺 👍 的，可能是人家太菜了吧喵~ 😿</p><p>大概做法就是</p><p><img src="E:%5Cblog%5Cnode_modules%5Chexo-theme-fluid%5Csource%5Cimg%5C%E6%89%AB%E6%8F%8F%E7%BA%BF1.png" alt=""></p><p>我们把这个直线拆成两条竖线，然后从左向右枚举每个横坐标，在横坐标为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> 的时候把这条直线加进来，在横坐标为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">8</span></span></span></span> 的时候把这条直线删掉，然后对于每个横坐标统计有多少纵坐标被直线覆盖了，不难发现这就是矩形面积并。</p><p>也就是变成下面这样（</p><p><img src="E:%5Cblog%5Cnode_modules%5Chexo-theme-fluid%5Csource%5Cimg%5C%E6%89%AB%E6%8F%8F%E7%BA%BF2.png" alt=""></p><p>这玩意感觉就很对对吧 😆😆😆</p><p>但是这玩意怎么用线段树维护呢？我们在每个横坐标要维护每个纵坐标被多少条直线覆盖，但是被多条直线覆盖的点只会被统计一次 🤔🤔🤔</p><p>发现这玩意好像不太能标记下传，所以就直接标记永久化。</p><p>我们对于每一个节点维护是否有线段覆盖整个节点以及节点被线段覆盖的节点个数，第一个就是标记，第二个显然可以用 <code>pushup</code> 维护，具体来说就是查一下当前节点有没有标记，如果没有就把子节点的传上来，否则个数就是节点长度，这样就搞完了。</p><p>哦对了，因为横坐标值域是 <code>1e9</code>，所以还需要离散化一下 😆，记得一定是先删线段后查询的 😁</p><p>code</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>学习笔记</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>扫描线</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Boruvka 相关</title>
     <link href="/2023/08/18/Boruvka%20%E7%9B%B8%E5%85%B3/"/>
     <url>/2023/08/18/Boruvka%20%E7%9B%B8%E5%85%B3/</url>
