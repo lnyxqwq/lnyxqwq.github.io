@@ -16,17 +16,17 @@
   <meta name="author" content="lnyx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="根本不会这个东西， 🤡 了。 博主比狗还菜，轻喷 😥 洛谷 P5490 【模板】扫描线 板子，教你怎么搞扫描线的。 但是我感觉这个线段树挺 👍 的，可能是人家太菜了吧喵~ 😿 大概做法就是  我们把这个直线拆成两条竖线，然后从左向右枚举每个横坐标，在横坐标为 222 的时候把这条直线加进来，在横坐标为 888 的时候把这条直线删掉，然后对于每个横坐标统计有多少纵坐标被直线覆盖了，不难发现这">
+    <meta name="description" content="根本不会这个东西， 🤡 了。 博主比狗还菜，轻喷 😥 洛谷 P5490 【模板】扫描线 板子，教你怎么搞扫描线的。 但是我感觉这个线段树挺 👍 的，可能是人家太菜了吧喵~ 😿 大概做法就是  我们把这个直线拆成两条竖线，然后从左向右枚举每个横坐标，在横坐标为 222 的时候把这条直线加进来，在横坐标为 777 的时候把这条直线删掉，然后对于每个横坐标统计有多少纵坐标被直线覆盖了，不难发现这">
 <meta property="og:type" content="article">
 <meta property="og:title" content="纯纯小丑的扫描线">
 <meta property="og:url" content="http://lnyxqwq.github.io/2023/08/25/%E7%BA%AF%E7%BA%AF%E5%B0%8F%E4%B8%91%E7%9A%84%E6%89%AB%E6%8F%8F%E7%BA%BF/index.html">
 <meta property="og:site_name" content="o(*≧▽≦)ツ">
-<meta property="og:description" content="根本不会这个东西， 🤡 了。 博主比狗还菜，轻喷 😥 洛谷 P5490 【模板】扫描线 板子，教你怎么搞扫描线的。 但是我感觉这个线段树挺 👍 的，可能是人家太菜了吧喵~ 😿 大概做法就是  我们把这个直线拆成两条竖线，然后从左向右枚举每个横坐标，在横坐标为 222 的时候把这条直线加进来，在横坐标为 888 的时候把这条直线删掉，然后对于每个横坐标统计有多少纵坐标被直线覆盖了，不难发现这">
+<meta property="og:description" content="根本不会这个东西， 🤡 了。 博主比狗还菜，轻喷 😥 洛谷 P5490 【模板】扫描线 板子，教你怎么搞扫描线的。 但是我感觉这个线段树挺 👍 的，可能是人家太菜了吧喵~ 😿 大概做法就是  我们把这个直线拆成两条竖线，然后从左向右枚举每个横坐标，在横坐标为 222 的时候把这条直线加进来，在横坐标为 777 的时候把这条直线删掉，然后对于每个横坐标统计有多少纵坐标被直线覆盖了，不难发现这">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="e:%5Cblog%5Cnode_modules%5Chexo-theme-fluid%5Csource%5Cimg%5C%E6%89%AB%E6%8F%8F%E7%BA%BF1.png">
 <meta property="og:image" content="e:%5Cblog%5Cnode_modules%5Chexo-theme-fluid%5Csource%5Cimg%5C%E6%89%AB%E6%8F%8F%E7%BA%BF2.png">
 <meta property="article:published_time" content="2023-08-25T13:03:18.000Z">
-<meta property="article:modified_time" content="2023-08-26T10:16:50.000Z">
+<meta property="article:modified_time" content="2023-08-26T13:03:26.000Z">
 <meta property="article:author" content="lnyx">
 <meta property="article:tag" content="扫描线">
 <meta name="twitter:card" content="summary_large_image">
@@ -250,7 +250,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -307,7 +307,7 @@
 <p>但是我感觉这个线段树挺 👍 的，可能是人家太菜了吧喵~ 😿</p>
 <p>大概做法就是</p>
 <p><img src="E:%5Cblog%5Cnode_modules%5Chexo-theme-fluid%5Csource%5Cimg%5C%E6%89%AB%E6%8F%8F%E7%BA%BF1.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>我们把这个直线拆成两条竖线，然后从左向右枚举每个横坐标，在横坐标为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> 的时候把这条直线加进来，在横坐标为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">8</span></span></span></span> 的时候把这条直线删掉，然后对于每个横坐标统计有多少纵坐标被直线覆盖了，不难发现这就是矩形面积并。</p>
+<p>我们把这个直线拆成两条竖线，然后从左向右枚举每个横坐标，在横坐标为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> 的时候把这条直线加进来，在横坐标为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span> 的时候把这条直线删掉，然后对于每个横坐标统计有多少纵坐标被直线覆盖了，不难发现这就是矩形面积并。</p>
 <p>也就是变成下面这样（</p>
 <p><img src="E:%5Cblog%5Cnode_modules%5Chexo-theme-fluid%5Csource%5Cimg%5C%E6%89%AB%E6%8F%8F%E7%BA%BF2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>这玩意感觉就很对对吧 😆😆😆</p>
